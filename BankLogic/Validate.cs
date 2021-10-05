@@ -15,7 +15,7 @@ namespace BankLogic
         /// <returns></returns>
         public static bool ValidateName(this string name)
         {
-            return Regex.Match(name, "^[a-öA-Ö]*$").Success;
+            return Regex.Match(name, "^[a-öA-Ö]*$").Success && !string.IsNullOrWhiteSpace(name);
         }
 
         /// <summary>

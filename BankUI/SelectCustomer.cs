@@ -38,15 +38,13 @@ namespace BankUI
                         else
                         {
                             Console.WriteLine($"No customer with social number{socialNumber} found");
-                            Thread.Sleep(700);
-                            Console.Clear();
+                            Program.Clear();
                         }
                     }
                     else
                     {
                         Console.WriteLine("\nInvalid input (8 digits)");
-                        Thread.Sleep(700);
-                        Console.Clear();
+                        Program.Clear();
                     }
                 }
             }
@@ -80,17 +78,22 @@ namespace BankUI
                             {
                                 case "y":
                                     CurrentCustomer = Bank.GetCustomerBySocialNumber(CurrentCustomer.GetCustomerSocialNumber());
-                                    decimal payout = 0;
+                                    decimal total = 0;
+                                    decimal balance = 0;
+                                    decimal interest = 0;
+
                                     Console.Clear();
                                     PrintCustomerHeader();
                                     foreach (var account in CurrentCustomer.GetAccounts())
                                     {
-                                        payout = account.GetBalance();
+                                        total += account.GetBalance() * account.GetInterest();
+                                        balance += account.GetBalance();
+                                        interest += total - balance;
                                     }
-                                    if (payout > 0)
+                                    if (total > 0)
                                     {
                                         Console.WriteLine("Closed accounts");
-                                        Console.WriteLine($"Payout: {payout:c}");
+                                        Console.WriteLine($"Payment\nTotal: {total:c}\nAmount in interest: {interest:C}");                                   
                                     }
                                     else
                                     {
@@ -205,7 +208,6 @@ namespace BankUI
                             Console.WriteLine("You dont have any accounts");
                             Program.Clear();
                         }
-                        Program.Clear();
                         break;
                     case 2: // Withdraw
                         if (CurrentCustomer.GetAccounts().Count > 0)

@@ -55,6 +55,14 @@ namespace BankLogic
         }
 
 
+        /// <summary>
+        /// Returns interest
+        /// </summary>
+        /// <returns></returns>
+        public decimal GetInterest()
+        {
+            return Interest;
+        }
 
         public decimal GetBalance()
         {
@@ -119,5 +127,6 @@ namespace BankLogic
             List<SavingsAccount> data = DataAccess.CSV.Read<SavingsAccount>(Bank.FilePathSavingsAccount);
             return data;
         }
+
     }
 }

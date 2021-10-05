@@ -6,15 +6,6 @@ namespace BankUI
 {
     public static class Program
     {
-
-
-        // ADD logic to RemoveCustomer to return all accounst balance* rent
-        // Add remove account
-
-
-
-
-
         static void Main(string[] args)
         {
             bool quit = false;
