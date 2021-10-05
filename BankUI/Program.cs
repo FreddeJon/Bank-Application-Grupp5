@@ -12,16 +12,21 @@ namespace BankUI
             do
             {
                 Bank.ReadFromDB();
+                MainHeader();
                 Console.WriteLine("1. Add new customer\n2. Select Customer\n3. Show all customers\n4. Exit");
                 _ = Int32.TryParse(Console.ReadLine(), out int menu);
                 switch (menu)
                 {
                     case 1: // Adds a new user, logic inside Class Add
-                        if (Add.Customer()) Console.WriteLine("Customer added");
-                        Thread.Sleep(1000);
+                        if (Add.Customer())
+                        {
+                            Console.WriteLine("Customer added");
+                            Clear();
+                        }
                         Console.Clear();
                         break;
                     case 2:
+                        Console.Clear();
                         Select.Customer();
                         break;
                     case 3:
@@ -29,7 +34,9 @@ namespace BankUI
                         {
                             Console.WriteLine(customer.ToString());
                         }
+                        Console.WriteLine("Enter to continue");
                         Console.ReadLine();
+                        Console.Clear();
                         break;
                     case 4:
                         quit = true;
@@ -45,6 +52,7 @@ namespace BankUI
                         }
                         break;
                     default:
+                        Console.Clear();
                         break;
                 }
                 Bank.SaveToDB();
@@ -67,6 +75,20 @@ namespace BankUI
                 return save;
             }
             return name;
+        }
+
+        public static void Clear()
+        {
+            Thread.Sleep(700);
+            Console.Clear();
+        }
+
+
+
+        public static void MainHeader()
+        {
+            Console.WriteLine("Main Menu");
+            Console.WriteLine("-----------------------");
         }
     }
 }

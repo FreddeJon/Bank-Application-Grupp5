@@ -14,25 +14,36 @@ namespace BankLogic
     public class SavingsAccount
 {
         public long AccountNumber { get; }
-        public double Interest { get; private set; }
+        public decimal Interest { get; private set; }
         public AccountType AccountType { get;}
         public long CustomerId { get;}
         public decimal AccountBalance { get; set; }
 
-        public SavingsAccount(AccountType accountType, long customerId, int accountNumber, decimal accountBalance)
+        public SavingsAccount(AccountType accountType, decimal interest, long customerId, int accountNumber, decimal accountBalance)
         {
             AccountType = accountType;
+            Interest = interest;
             CustomerId = customerId;
             AccountBalance = accountBalance;
             AccountNumber = accountNumber;
         }
         public SavingsAccount(AccountType accountType, long customerId)
         {
-            AccountNumber = 1;
+            AccountNumber = Bank.GetCurrentAccountNumber();
             AccountType = accountType;
             CustomerId = customerId;
             AccountBalance = 0;
+            if (accountType == AccountType.Savings)
+            {
+                Interest = 1.15m;
+            }
+            else
+            {
+                Interest = 1.05m;
+            }
         }
+
+
 
         public SavingsAccount(SavingsAccount savingsAccount)
         {
@@ -43,25 +54,46 @@ namespace BankLogic
             AccountBalance = savingsAccount.AccountBalance;
         }
 
-        public void Deposit(decimal amount)
+
+        /// <summary>
+        /// Returns interest
+        /// </summary>
+        /// <returns></returns>
+        public decimal GetInterest()
+        {
+            return Interest;
+        }
+
+        public decimal GetBalance()
+        {
+            return AccountBalance;
+        }
+
+
+
+        public bool Deposit(decimal amount)
         {
             if (amount > 0)
             {
                 AccountBalance += amount;
-                Console.WriteLine($"Deposited {amount} new balance:{AccountBalance}");
+                Console.WriteLine($"Deposited {amount:C} new balance:{AccountBalance:C}");
+                return true;
             }
             else
             {
                 Console.WriteLine("Cant deposit negative numbers");
+                return false;
             }
         }
+
+
 
         public bool Withdraw(decimal amount)
         {
             bool validated = false;
             if (amount > 0 && AccountBalance - amount >= 0)
             {
-                Console.WriteLine($"Withdrew {amount:C} from Account");
+                Console.WriteLine($"Withdrew {amount:C} from: {AccountNumber}");
                 AccountBalance -= amount;
                 validated = true;
             }
@@ -71,18 +103,30 @@ namespace BankLogic
             }
             else
             {
-                Console.WriteLine($": Balance to low");
+                Console.WriteLine($"[{AccountNumber}] Balance to low");
             }
             return validated;
         }
+
+
+
         public override string ToString()
         {
-            return $"{AccountType}:Balance:{AccountBalance}";
+            return $"[{AccountNumber}]{AccountType}:Balance:{AccountBalance:C}";
         }
+
+
+
+        /// <summary>
+        /// Reads accounts from csv file and returns a list of accounts
+        /// Needs to be in accounts class to automap accounts
+        /// </summary>
+        /// <returns></returns>
         public static List<SavingsAccount> ReadFromDB()
         {
             List<SavingsAccount> data = DataAccess.CSV.Read<SavingsAccount>(Bank.FilePathSavingsAccount);
             return data;
         }
+
     }
 }

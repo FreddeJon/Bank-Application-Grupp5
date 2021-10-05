@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Linq;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace BankLogic
 {
@@ -19,9 +15,14 @@ namespace BankLogic
         /// <returns></returns>
         public static bool ValidateName(this string name)
         {
-            return Regex.Match(name, "^[a-öA-Ö]*$").Success;
+            return Regex.Match(name, "^[a-öA-Ö]*$").Success && !string.IsNullOrWhiteSpace(name);
         }
 
+        /// <summary>
+        /// Checks if given string can be parsed as long and lenght of 8
+        /// </summary>
+        /// <param name="socialNumber"></param>
+        /// <returns></returns>
         public static bool ValidateSocialNumber(this string socialNumber)
         {
             if (long.TryParse(socialNumber, out long _))
