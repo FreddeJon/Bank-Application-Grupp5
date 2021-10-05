@@ -17,12 +17,12 @@ namespace BankUI
                 {
                     Console.WriteLine("Select by social number [e] to go back to menu");
                     Console.WriteLine("----------------------------------------------");
-                    Console.Write("Enter socialnumber:");
+                    Console.Write("Enter socialnumber: ");
                     string userInp = Console.ReadLine();
                     if (userInp.ToLower() == "e")
                     {
                         quit = true;
-                        Program.Clear();
+                        Console.Clear();
                         break;
                     }
                     else if (long.TryParse(userInp, out long socialNumber))
@@ -37,7 +37,7 @@ namespace BankUI
                         }
                         else
                         {
-                            Console.WriteLine($"No customer with social number{socialNumber} found");
+                            Console.WriteLine($"No customer with socialnumber {socialNumber} found");
                             Program.Clear();
                         }
                     }
