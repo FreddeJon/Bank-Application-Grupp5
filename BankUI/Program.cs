@@ -9,6 +9,7 @@ namespace BankUI
     {
         static void Main(string[] args)
         {
+            //Menyn
             bool quit = false;
             do
             {
