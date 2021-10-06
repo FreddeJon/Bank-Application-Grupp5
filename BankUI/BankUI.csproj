@@ -9,4 +9,16 @@
     <ProjectReference Include="..\BankLogic\BankLogic.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Data\currentAccount.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Data\customer.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Data\savingsAccounts.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
