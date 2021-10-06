@@ -44,7 +44,7 @@ namespace BankUI
                         break;
                     case 5: // Generate data
                         var rnd = new Random();
-                        int person = 11000;
+                        int person = 500;
                         var arrayOfPeeps = CommonLib.Generate.Names(rnd, person);
                         var listOfCustomers = new List<Customer>();
                         for (int i = 0; i < person; i++)
