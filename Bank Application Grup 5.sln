@@ -12,6 +12,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BankUI", "BankUI\BankUI.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccess", "DataAccess\DataAccess.csproj", "{722AA366-29FE-4824-8456-990DD6123A79}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommonLib", "..\..\SMS\CommonLib\CommonLib.csproj", "{4DD27881-74A8-4759-94FC-6EADAA39F80E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,6 +32,10 @@ Global
 		{722AA366-29FE-4824-8456-990DD6123A79}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{722AA366-29FE-4824-8456-990DD6123A79}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{722AA366-29FE-4824-8456-990DD6123A79}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4DD27881-74A8-4759-94FC-6EADAA39F80E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4DD27881-74A8-4759-94FC-6EADAA39F80E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4DD27881-74A8-4759-94FC-6EADAA39F80E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4DD27881-74A8-4759-94FC-6EADAA39F80E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

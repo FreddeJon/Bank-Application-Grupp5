@@ -66,7 +66,7 @@ namespace BankLogic
 
 
 
-        /// <summary>
+         /// <summary>
         /// Returns a list of all accounts
         /// </summary>
         /// <returns></returns>
@@ -86,6 +86,7 @@ namespace BankLogic
             AllCustomers = Customer.ReadFromDB();
 
             // Loops all accounts and adds it to the right customer
+
             foreach (var account in SavingsAccount.ReadFromDB())
             {
                 foreach (var customer in AllCustomers)

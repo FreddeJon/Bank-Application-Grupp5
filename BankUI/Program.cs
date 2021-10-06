@@ -1,5 +1,6 @@
 ﻿using BankLogic;
 using System;
+using System.Collections.Generic;
 using System.Threading;
 
 namespace BankUI
@@ -41,15 +42,21 @@ namespace BankUI
                     case 4:
                         quit = true;
                         break;
-                    case 5:
-                        foreach (var customer in Bank.GetCustomers())
+                    case 5: // Generate data
+                        var rnd = new Random();
+                        int person = 11000;
+                        var arrayOfPeeps = CommonLib.Generate.Names(rnd, person);
+                        var listOfCustomers = new List<Customer>();
+                        for (int i = 0; i < person; i++)
                         {
-                            Console.WriteLine(customer.ToString());
-                            foreach (var account in customer.GetAccounts())
-                            {
-                                Console.WriteLine(account.ToString());
-                            }
+                            listOfCustomers.Add(new Customer(arrayOfPeeps[i, 0].ToString(), arrayOfPeeps[i, 1].ToString(), long.Parse(arrayOfPeeps[i, 2])));
                         }
+                        foreach (var cust in listOfCustomers)
+                        {
+                            Bank.AddToCustomerList(cust);
+                        }
+                        Console.ReadLine();
+            
                         break;
                     default:
                         Console.Clear();

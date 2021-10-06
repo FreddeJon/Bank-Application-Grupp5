@@ -163,7 +163,16 @@ namespace BankLogic
         /// <returns></returns>
         public override string ToString()
         {
-            return $"Name:{FirstName} {LastName}ID:{CustomerSocialNumber}:Created:{CustomerSince}";
+            var lines = string.Empty;
+            if (GetCustomerName().Length < 30)
+            {
+                lines = string.Empty;
+                while (GetCustomerName().Length + lines.Length < 30)
+                {
+                    lines += " ";
+                }
+            }
+            return $"[Name]{FirstName} {LastName}{lines}[ID]{CustomerSocialNumber} [Created]{CustomerSince}";
         }
 
 
