@@ -6,7 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\SMS\CommonLib\CommonLib.csproj" />
     <ProjectReference Include="..\BankLogic\BankLogic.csproj" />
   </ItemGroup>
 
