@@ -10,9 +10,9 @@ namespace BankLogic
 {
     public static class Bank
     {
-        public const string FilePathCustomer = "Data\\customer.csv";
-        public const string FilePathSavingsAccount = "Data\\savingsAccounts.csv";
-        public const string FilePathCurrentAccount = "Data\\currentAccount.csv";
+        public static readonly string FilePathCustomer = Path.Combine(Directory.GetCurrentDirectory(), "Data\\customer.csv");
+        public static readonly string FilePathSavingsAccount = Path.Combine(Directory.GetCurrentDirectory(), "Data\\savingsAccounts.csv");
+        public static readonly string FilePathCurrentAccount = Path.Combine(Directory.GetCurrentDirectory(), "Data\\currentAccount.csv");
         private static List<Customer> AllCustomers { get; set; }
 
 

@@ -42,7 +42,6 @@ namespace BankUI
                     case 4:
                         quit = true;
                         break;
-                        break;
                     default:
                         Console.Clear();
                         break;
