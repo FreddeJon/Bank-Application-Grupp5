@@ -7,19 +7,19 @@ using System.Threading.Tasks;
 namespace BankLogic
 {
 
-    enum AccountType
+    public enum AccountType
     {
         SavingsAccount,
         SpendingAccount,
         //CreditAccount?
     }
-    class Account
+    public class Account
     {
-        public long AccountNumber { get;}
-        public long AccountID { get;}
-        public AccountType AccountType { get;}
+        public long AccountNumber { get; }
+        public long AccountID { get; }
+        public AccountType AccountType { get; }
         public decimal AccountBalance { get; private set; }
-        public decimal Interest { get;}
+        public decimal Interest { get; }
 
         /*
          * 

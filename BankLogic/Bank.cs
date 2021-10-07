@@ -6,11 +6,17 @@ using System.Threading.Tasks;
 
 namespace BankLogic
 {
-    class Bank
+   public static class Bank
     {
-        public List<Customer> CustomerList { get; private set; }
+        public static List<Customer> CustomerList { get; set; } = new List<Customer>();
+
+
+
 
         /*
+         * 
+         * ctor
+         * 
          * GetCustomers()
          * GetCustomerByCustomerID()
          * 
