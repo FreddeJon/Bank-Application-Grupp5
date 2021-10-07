@@ -36,6 +36,13 @@ namespace BankLogic
          * 
          * 
          */
+
+        //Default Constructor
+        public Account()
+        {
+        }
+
+        //Constructor
         public Account(long accountNumber, long accountId, AccountType accountType )
         {
             AccountNumber = accountNumber;
@@ -51,22 +58,32 @@ namespace BankLogic
             }
         }
 
+       
+        //Get the account number and return it
         public long GetAccountNumber()
         {
             return AccountNumber;
         }
+
+        //Get the account ID and return it
         public long GetAccountId()
         {
             return AccountID;
         }
+
+        //Get the account type and return it
         public AccountType accountType()
         {
             return AccountType;
         }
+
+        //Get the account Balance and return it
         public decimal GetAccountBalance()
         {
             return AccountBalance;
         }
+
+        //Get the interest and return it
         public decimal GetInterest()
         {
             return Interest;
