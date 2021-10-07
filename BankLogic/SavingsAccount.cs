@@ -13,7 +13,7 @@ namespace BankLogic
     public enum AccountType
     {
         Savings,
-        Spending
+        Spending,
     }
     public class SavingsAccount
 {
@@ -43,11 +43,13 @@ namespace BankLogic
         }
 
 
-        public SavingsAccount(AccountType accountType, long customerId)
+
+        //Ctor for new accounts
+        public SavingsAccount(AccountType accountType, long customerSocialNumber)
         {
             AccountNumber = Bank.GetCurrentAccountNumber();
             AccountType = accountType;
-            CustomerId = customerId;
+            CustomerId = customerSocialNumber;
             AccountBalance = 0;
             if (accountType == AccountType.Savings)
             {
@@ -57,21 +59,6 @@ namespace BankLogic
             {
                 Interest = 1.05m;
             }
-        }
-
-
-
-        /// <summary>
-        /// ctor to add already existing account
-        /// </summary>
-        /// <param name="savingsAccount"></param>
-        public SavingsAccount(SavingsAccount savingsAccount)
-        {
-            AccountNumber = savingsAccount.AccountNumber;
-            Interest = savingsAccount.Interest;
-            AccountType = savingsAccount.AccountType;
-            CustomerId = savingsAccount.CustomerId;
-            AccountBalance = savingsAccount.AccountBalance;
         }
 
 

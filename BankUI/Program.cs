@@ -8,7 +8,7 @@ namespace BankUI
     public static class Program
     {
         static void Main(string[] args)
-        {
+        {     
             //Menyn
             bool quit = false;
             do
@@ -53,7 +53,6 @@ namespace BankUI
 
             } while (!quit);
         }
-
 
         public static string FirstToUpper(this string name)
         {

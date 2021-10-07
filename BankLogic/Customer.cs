@@ -152,7 +152,9 @@ namespace BankLogic
         /// <param name="savingsAccounts"></param>
         public void CreateAccount(SavingsAccount savingsAccounts)
         {
-            CustomerAccounts.Add(new SavingsAccount(savingsAccounts));
+
+            CustomerAccounts.Add(savingsAccounts);
+        
         }
 
 

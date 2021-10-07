@@ -49,6 +49,9 @@ namespace BankUI
             }
         }
 
+
+
+
         private static void CustomerMenu()
         {
             bool quit = false;
@@ -65,7 +68,7 @@ namespace BankUI
                         break;
                     case 2:
                         break;
-                    case 3: // ADD LOGIC TO PRINT OUT VALUE OF ALL ACCOUNTS
+                    case 3:
                         bool quit2 = false;
                         while (!quit2)
                         {

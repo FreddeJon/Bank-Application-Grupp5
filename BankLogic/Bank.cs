@@ -13,6 +13,8 @@ namespace BankLogic
         public static readonly string FilePathCustomer = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName + "\\Data\\customer.csv";
         public static readonly string FilePathSavingsAccount = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName + "\\Data\\savingsAccounts.csv";
         public static readonly string FilePathCurrentAccount = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName + "\\Data\\currentAccount.csv";
+       
+
         private static List<Customer> AllCustomers { get; set; }
 
 
@@ -44,14 +46,14 @@ namespace BankLogic
         }
 
 
-
+        
         /// <summary>
         /// Adds a customer to AllCustomer list
         /// </summary>
         /// <param name="customer"></param>
         public static void AddToCustomerList(Customer customer)
         {
-            AllCustomers.Add(customer);
+            AllCustomers.Add(customer);          
         }
 
 
@@ -87,6 +89,8 @@ namespace BankLogic
 
             // Loops all accounts and adds it to the right customer
 
+
+
             foreach (var account in SavingsAccount.ReadFromDB())
             {
                 foreach (var customer in AllCustomers)
@@ -94,6 +98,7 @@ namespace BankLogic
                     if (customer.GetCustomerSocialNumber() == account.CustomerId)
                     {
                         customer.CreateAccount(account);
+                        break;
                     }
                 }
             }
