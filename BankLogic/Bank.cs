@@ -15,7 +15,7 @@ namespace BankLogic
 
         /*
          * 
-         * ctor
+         *
          * 
          * GetCustomers()
          * GetCustomerByCustomerID()
