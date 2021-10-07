@@ -6,35 +6,19 @@ using System.Threading.Tasks;
 
 namespace BankLogic
 {
-   public static class Bank
+    public static class Bank
     {
         public static List<Customer> CustomerList { get; set; } = new List<Customer>();
 
 
 
-
-        /*
-         * 
-         *
-         * 
-         * GetCustomers()
-         * GetCustomerByCustomerID()
-         * 
-         * AddCustomer()
-         * 
-         * RemoveCustomer()
-         * 
-         * 
-         * 
-         */
-
         public static bool AddCustomer(long id, string fname, string lname)
         {
-          var customerid=  CustomerList.FirstOrDefault(x=> x.CustomerID==id);
+            var customerid = CustomerList.FirstOrDefault(x => x.GetCustomerID() == id);
 
             if (customerid == null)
             {
-                CustomerList.Add(new Customer { FirstName=fname, LastName=lname});
+                CustomerList.Add(new Customer(fname, lname, id));
                 return true;
             }
 
@@ -50,27 +34,27 @@ namespace BankLogic
             {
                 Console.WriteLine($"Firstname: {customer.FirstName} | Lastname: {customer.LastName}");
             }
-	       return CustomerList;
+            return CustomerList;
         }
 
-        public static List<Customer> GetCustomerByCustomerID(long id)
+        public static List<Customer> GetCustomerByCustomerID(long id) 
         {
-            foreach (var customer in CustomerList.Where(c=> c.CustomerID == id))
-            { 
+            foreach (var customer in CustomerList.Where(c => c.GetCustomerID() == id))
+            {
 
-            Console.WriteLine($"Firstname: {customer.FirstName} | Lastname: {customer.LastName}");
-                
+                Console.WriteLine($"Firstname: {customer.FirstName} | Lastname: {customer.LastName}");
+
             }
-	         return CustomerList;
+            return CustomerList;
         }
 
         public static List<Customer> RemoveCustomer(long id)
         {
-            foreach (var customer in CustomerList.Where(c=> c.CustomerID == id))
+            foreach (var customer in CustomerList.Where(c => c.GetCustomerID() == id))
             {
                 CustomerList.Remove(customer);
             }
-	        return CustomerList;
+            return CustomerList;
         }
     }
 }
