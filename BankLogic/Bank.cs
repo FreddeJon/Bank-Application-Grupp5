@@ -8,5 +8,17 @@ namespace BankLogic
 {
     class Bank
     {
+        public List<Customer> CustomerList { get; private set; }
+
+        /*
+         * GetCustomers()
+         * GetCustomerByCustomerID()
+         * 
+         * AddCustomer()
+         * RemoveCustomer()
+         * 
+         * 
+         * 
+         */
     }
 }
