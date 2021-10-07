@@ -28,14 +28,14 @@ namespace BankLogic
          * 
          */
 
-        public bool AddCustomer(long id, string fname, string lname)
+        public static bool AddCustomer(long id, string fname, string lname)
         {
           var customerid=  CustomerList.FirstOrDefault(x=> x.CustomerID==id);
 
             if (customerid == null)
             {
                 CustomerList.Add(new Customer { FirstName=fname, LastName=lname});
-                return true
+                return true;
             }
 
             else
@@ -44,7 +44,7 @@ namespace BankLogic
             }
         }
 
-        public List<Customer> GetCustomers()
+        public static List<Customer> GetCustomers()
         {
             foreach (var customer in CustomerList)
             {
@@ -53,7 +53,7 @@ namespace BankLogic
 	       return CustomerList;
         }
 
-        public List<Customer> GetCustomerByCustomerID(long id)
+        public static List<Customer> GetCustomerByCustomerID(long id)
         {
             foreach (var customer in CustomerList.Where(c=> c.CustomerID == id))
             { 
@@ -64,7 +64,7 @@ namespace BankLogic
 	         return CustomerList;
         }
 
-        public List<Customer> RemoveCustomer()
+        public static List<Customer> RemoveCustomer(long id)
         {
             foreach (var customer in CustomerList.Where(c=> c.CustomerID == id))
             {
