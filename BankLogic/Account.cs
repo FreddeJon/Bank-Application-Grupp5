@@ -36,6 +36,41 @@ namespace BankLogic
          * 
          * 
          */
+        public Account(long accountNumber, long accountId, AccountType accountType )
+        {
+            AccountNumber = accountNumber;
+            AccountID = accountId;
+            AccountType = accountType;
+            if (AccountType == AccountType.SavingsAccount)
+            {
+                Interest = 1.15M;
+            }
+            else
+            {
+                Interest = 1.05M;
+            }
+        }
+
+        public long GetAccountNumber()
+        {
+            return AccountNumber;
+        }
+        public long GetAccountId()
+        {
+            return AccountID;
+        }
+        public AccountType accountType()
+        {
+            return AccountType;
+        }
+        public decimal GetAccountBalance()
+        {
+            return AccountBalance;
+        }
+        public decimal GetInterest()
+        {
+            return Interest;
+        }
 
         public override string ToString()
         {
