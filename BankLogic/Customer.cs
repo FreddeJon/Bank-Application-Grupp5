@@ -20,41 +20,36 @@ namespace BankLogic
             LastName = lastname;
             CustomerID = customerid;
         }
+
+
         public string GetName()
         {
             return FirstName + " " + LastName;
         }
+
+
         public long GetCustomerID()
         {
             return CustomerID;
         }
+
+
         public List<Account> GetCustomerAccounts()
         {
             return CustomerAccounts;
         }
+
+
         public void ChangeName(string firstname, string lastname)
         {
             FirstName = firstname;
             LastName = lastname;
         }
-        public void AddAccount()
+
+
+        public void AddAccount() // CHANGE WHEN ACCOUNT CTOR DONE
         {
             CustomerAccounts.Add(new Account());
         }
-
-
-        
-        
-
-
-
-
-
-
-
-
-
-
-
     }
 }
