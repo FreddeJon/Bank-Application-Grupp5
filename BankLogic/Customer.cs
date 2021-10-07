@@ -48,23 +48,6 @@ namespace BankLogic
 
 
 
-        /*
-         * 
-         * 
-         * 
-         * 
-         *      
-         * 
-         * 
-         * 
-         * 
-         * 
-         * 
-         * AddAccount() // To CustomerAccounts link to account ctor
-         * 
-         * 
-         */
-
 
 
 
