@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace BankLogic
 {
+
+    /// <summary>
+    /// Account Type
+    /// </summary>
     public enum AccountType
     {
         Savings,
@@ -19,6 +23,16 @@ namespace BankLogic
         public long CustomerId { get;}
         public decimal AccountBalance { get; set; }
 
+
+
+        /// <summary>
+        /// CSV helper needs this ctor to automap a list<SavingsAccounts> from csv file
+        /// </summary>
+        /// <param name="accountType"></param>
+        /// <param name="interest"></param>
+        /// <param name="customerId"></param>
+        /// <param name="accountNumber"></param>
+        /// <param name="accountBalance"></param>
         public SavingsAccount(AccountType accountType, decimal interest, long customerId, int accountNumber, decimal accountBalance)
         {
             AccountType = accountType;
@@ -27,6 +41,8 @@ namespace BankLogic
             AccountBalance = accountBalance;
             AccountNumber = accountNumber;
         }
+
+
         public SavingsAccount(AccountType accountType, long customerId)
         {
             AccountNumber = Bank.GetCurrentAccountNumber();
@@ -45,6 +61,10 @@ namespace BankLogic
 
 
 
+        /// <summary>
+        /// ctor to add already existing account
+        /// </summary>
+        /// <param name="savingsAccount"></param>
         public SavingsAccount(SavingsAccount savingsAccount)
         {
             AccountNumber = savingsAccount.AccountNumber;
@@ -53,6 +73,7 @@ namespace BankLogic
             CustomerId = savingsAccount.CustomerId;
             AccountBalance = savingsAccount.AccountBalance;
         }
+
 
 
         /// <summary>
@@ -64,6 +85,12 @@ namespace BankLogic
             return Interest;
         }
 
+
+
+        /// <summary>
+        /// Returns account balance
+        /// </summary>
+        /// <returns></returns>
         public decimal GetBalance()
         {
             return AccountBalance;
@@ -71,6 +98,12 @@ namespace BankLogic
 
 
 
+        /// <summary>
+        /// Deposits amount into account if amount > 0
+        /// returns a true if success
+        /// </summary>
+        /// <param name="amount"></param>
+        /// <returns></returns>
         public bool Deposit(decimal amount)
         {
             if (amount > 0)
@@ -88,6 +121,11 @@ namespace BankLogic
 
 
 
+        /// <summary>
+        /// Withdraws amount from account if accounts has enough balance
+        /// </summary>
+        /// <param name="amount"></param>
+        /// <returns></returns>
         public bool Withdraw(decimal amount)
         {
             bool validated = false;
