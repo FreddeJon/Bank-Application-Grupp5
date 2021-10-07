@@ -11,7 +11,7 @@ namespace BankLogic
         public string FirstName { get; private set; }
         public string LastName { get; private set; }
         public long CustomerID { get; } //Socialnumber
-        private List<Account> CustomerAccounts { get;  set; }
+        private List<Account> CustomerAccounts { get; set; }
 
          
         /*
