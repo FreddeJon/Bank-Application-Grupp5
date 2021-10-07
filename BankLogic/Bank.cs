@@ -6,9 +6,25 @@ using System.Threading.Tasks;
 
 namespace BankLogic
 {
-    class Bank
-    {// tsup
-        //suuppp
-        //suuuuuuuuuuuuuuup
+   public static class Bank
+    {
+        public static List<Customer> CustomerList { get; set; } = new List<Customer>();
+
+
+
+
+        /*
+         * 
+         *
+         * 
+         * GetCustomers()
+         * GetCustomerByCustomerID()
+         * 
+         * AddCustomer()
+         * RemoveCustomer()
+         * 
+         * 
+         * 
+         */
     }
 }
