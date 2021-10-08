@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BankLogic
+﻿namespace BankLogic
 {
 
     public enum AccountType
@@ -21,21 +15,6 @@ namespace BankLogic
         public decimal AccountBalance { get; private set; }
         public decimal Interest { get; }
 
-        /*
-         * 
-         * CTOR 1/2?
-         * 
-         * GetAccountNumber()
-         * GetAccountID()
-         * GetAccountType()
-         * GetAccountBalance()
-         * GetBalance()
-         * 
-         * Withdraw() Logic if not enough money // Special logic if accounttype Credit?
-         * Deposit() Logic if not < 0  // Deposit on credit account?
-         * 
-         * 
-         */
 
         //Default Constructor
         public Account()
@@ -43,9 +22,9 @@ namespace BankLogic
         }
 
         //Constructor
-        public Account(long accountNumber, long accountId, AccountType accountType )
+        public Account(long accountId, AccountType accountType )
         {
-            AccountNumber = accountNumber;
+            AccountNumber = Bank.GetUniqueAccountNumber();
             AccountID = accountId;
             AccountType = accountType;
             if (AccountType == AccountType.SavingsAccount)
