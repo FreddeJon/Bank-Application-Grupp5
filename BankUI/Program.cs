@@ -9,8 +9,8 @@ namespace BankUI
         public static void Main(string[] args)
         {
 
-
-            string text = "19931207";
+            // Test
+            string text = "19930107";
             if (text.ValidateCustomerID())
             {
                 Console.WriteLine($"{text} validated");
@@ -20,7 +20,8 @@ namespace BankUI
                 Console.WriteLine($"{text} not valid");
             }
             Console.ReadLine();
-
+            // Test
+             
             bool showMenu = true;
             while (showMenu)
             {
