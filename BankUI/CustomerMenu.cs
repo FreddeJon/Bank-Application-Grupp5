@@ -1,9 +1,10 @@
-﻿using BankLogic;
+﻿
+using BankLogic;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 
 namespace BankUI
 {
@@ -38,7 +39,7 @@ namespace BankUI
                 }
                 else
                 {
-                    Console.WriteLine("Invalid input");
+                    Console.WriteLine("Invalid input enter [YYYYMMDD]");
                 }
             }
         }
@@ -60,18 +61,58 @@ namespace BankUI
                         break;
                     case "2":
                         break;
-                    case "3":
+                    case "3": // Get Customer, get are you sure (Y/N) Return account fundings and interest then delete
+                        if (DeleteCustomer())
+                        {
+                            quit = true;
+                        }
                         break;
                     case "4": // Exit
-
+                        quit = true;
                         break;
                     default:
+                        Console.WriteLine("Invalid input");
+                        Thread.Sleep(1000);
+                        Console.Clear();
                         break;
-                }quit = true;
+                }
             }
-
         }
 
-    }
 
+        private static bool DeleteCustomer()
+        {
+            bool deleted = false;
+            bool quit = false;
+            while (!quit)
+            {
+                Console.WriteLine("Are you sure you want to close your account?");
+                Console.Write("[Y/N]: ");
+
+                switch (Console.ReadLine().ToLower().Trim())
+                {
+                    case "y":
+                        for(int i = 0; i < 3; i++)
+                        {
+                            Console.Write(".. ");
+                            Thread.Sleep(400);
+                        }
+
+                        Console.WriteLine("Deleted enter to continue");
+                        Console.ReadLine();
+
+                        quit = true;
+                        deleted = true;
+                        break;
+                    case "n":
+                        quit = true;
+                        break;
+                    default:
+                        Console.WriteLine("Invalid input");
+                        break;
+                }
+            }
+            return deleted;
+        }
+    }
 }
