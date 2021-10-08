@@ -9,11 +9,20 @@ namespace BankLogic
 {
     public static class Validate
     {
+        /// <summary>
+        /// Returns true if name is valid
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public static bool ValidateName(this string name)
         {
             return Regex.Match(name, "^[a-öA-Ö]*$").Success && !string.IsNullOrWhiteSpace(name);
         }
-
+        /// <summary>
+        /// Returns truer if valid customerID format YYYYMMDD Input should be a string
+        /// </summary>
+        /// <param name="customerID"></param>
+        /// <returns></returns>
         public static bool ValidateCustomerID(this string customerID)
         {
             // Inte så snyggt men det fungerar
