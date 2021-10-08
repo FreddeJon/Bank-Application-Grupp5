@@ -6,11 +6,11 @@ namespace BankLogic
     {
         public string FirstName { get; private set; }
         public string LastName { get; private set; }
-        public long CustomerID { get; } //Socialnumber
+        public string CustomerID { get; } //Socialnumber
         private List<Account> CustomerAccounts { get; set; } = new List<Account>();
         
 
-        public Customer(string firstname, string lastname, long customerid)
+        public Customer(string firstname, string lastname, string customerid)
         {
             FirstName = firstname;
             LastName = lastname;

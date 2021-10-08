@@ -11,7 +11,7 @@ namespace BankLogic
 
 
 
-        public static bool AddCustomer(string fname, string lname, long id)
+        public static bool AddCustomer(string fname, string lname, string id)
         {
             var customerid = CustomerList.FirstOrDefault(x => x.GetCustomerID() == id);
 

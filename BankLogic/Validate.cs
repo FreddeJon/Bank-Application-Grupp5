@@ -55,5 +55,11 @@ namespace BankLogic
 
             return validated;
         }
+
+
+        public static bool CustomerExist(this string customerID)
+        {
+            var exists = Bank.GetCustomers().Where(x => x.GetCustomerID() == customerID).ToList();
+        }
     }
 }
