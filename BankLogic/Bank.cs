@@ -1,5 +1,7 @@
-﻿using System;
+﻿using DocumentFormat.OpenXml.ExtendedProperties;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -37,7 +39,7 @@ namespace BankLogic
             return CustomerList;
         }
 
-        public static List<Customer> GetCustomerByCustomerID(long id) 
+        public static List<Customer> GetCustomerByCustomerID(long id)
         {
             foreach (var customer in CustomerList.Where(c => c.GetCustomerID() == id))
             {
@@ -55,6 +57,28 @@ namespace BankLogic
                 CustomerList.Remove(customer);
             }
             return CustomerList;
+        }
+
+        public static long GetUniqueAccountNumber()
+        {
+            string read = File.ReadAllText("currentAccount.csv");
+
+            _ = long.TryParse(Console.ReadLine(), out long currentAccount);
+
+            if (currentAccount > 0)
+            {
+                SaveUniqueAccountNumber(currentAccount);
+                return currentAccount;
+            }
+            else
+            {
+                SaveUniqueAccountNumber(1001);
+                return 1001;
+            }           
+        }
+        public static void SaveUniqueAccountNumber(long number)
+        {
+            File.WriteAllText((Path.Combine(Directory.GetCurrentDirectory(), "currentAccount.csv")), number.ToString());
         }
     }
 }
