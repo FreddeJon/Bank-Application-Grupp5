@@ -30,8 +30,7 @@ namespace BankUI
         }
         private static bool MainMenu()
         {
-            string name, lastname;
-            long personnr;
+            string name, lastname, personnr;
 
             /*
              * TODO
@@ -78,7 +77,7 @@ namespace BankUI
                     lastname = Console.ReadLine();
 
                     Console.WriteLine("Please Enter your Personnummer: ");
-                    personnr = Convert.ToInt32(Console.ReadLine());
+                    personnr = Console.ReadLine();
 
                     Bank.AddCustomer(name, lastname, personnr);
                     Console.WriteLine("Press a key to continue");
@@ -86,7 +85,7 @@ namespace BankUI
                     return true;
                 case "2":
                     Console.WriteLine("Please Enter Personnummer to remove: ");
-                    personnr = Convert.ToInt32(Console.ReadLine());
+                    personnr = Console.ReadLine();
 
                     //Bank.RemoveCustomer(personnr); Funkade inte
                     Bank.RemoveCustomer(personnr);

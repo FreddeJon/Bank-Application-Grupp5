@@ -9,13 +9,13 @@
     public class Account
     {
         public long AccountNumber { get; }
-        public long AccountID { get; }
+        public string AccountID { get; }
         public AccountType AccountType { get; }
         public decimal AccountBalance { get; private set; }
         public decimal Interest { get; }
 
         //Constructor
-        public Account(long accountId, AccountType accountType )
+        public Account(string accountId, AccountType accountType )
         {
             AccountNumber = Bank.GetUniqueAccountNumber();
             AccountID = accountId;
@@ -38,7 +38,7 @@
         }
 
         //Get the account ID and return it
-        public long GetAccountId()
+        public string GetAccountId()
         {
             return AccountID;
         }

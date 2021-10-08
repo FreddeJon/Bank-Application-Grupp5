@@ -36,7 +36,7 @@ namespace BankLogic
             return CustomerList;
         }
 
-        public static List<Customer> GetCustomerByCustomerID(long id)
+        public static List<Customer> GetCustomerByCustomerID(string id)
         {
             foreach (var customer in CustomerList.Where(c => c.GetCustomerID() == id))
             {
@@ -47,7 +47,7 @@ namespace BankLogic
             return CustomerList;
         }
 
-        public static List<Customer> RemoveCustomer(long id)
+        public static List<Customer> RemoveCustomer(string id)
         {
             foreach (var customer in CustomerList.Where(c => c.GetCustomerID() == id))
             {
