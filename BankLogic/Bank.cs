@@ -61,8 +61,6 @@ namespace BankLogic
 
         public static long GetUniqueAccountNumber()
         {
-            long num = 0;
-
             string read = File.ReadAllText("currentAccount.csv");
 
             _ = long.TryParse(Console.ReadLine(), out long currentAccount);
