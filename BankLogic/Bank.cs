@@ -11,7 +11,7 @@ namespace BankLogic
 
 
 
-        public static bool AddCustomer(long id, string fname, string lname)
+        public static bool AddCustomer(string fname, string lname, long id)
         {
             var customerid = CustomerList.FirstOrDefault(x => x.GetCustomerID() == id);
 
@@ -58,24 +58,24 @@ namespace BankLogic
 
         public static long GetUniqueAccountNumber()
         {
-            string read = File.ReadAllText("currentAccount.csv");
+            string read = File.ReadAllText(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName + "\\Data\\currentAccount.csv");
 
-            _ = long.TryParse(Console.ReadLine(), out long currentAccount);
+            _ = long.TryParse(read, out long currentAccount);
 
             if (currentAccount > 0)
             {
-                SaveUniqueAccountNumber(currentAccount);
+                SaveUniqueAccountNumber(currentAccount + 1);
                 return currentAccount;
             }
             else
             {
-                SaveUniqueAccountNumber(1001);
+                SaveUniqueAccountNumber(1002);
                 return 1001;
-            }           
+            }
         }
         public static void SaveUniqueAccountNumber(long number)
         {
-            File.WriteAllText((Path.Combine(Directory.GetCurrentDirectory(), "currentAccount.csv")), number.ToString());
+            File.WriteAllText(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName + "\\Data\\currentAccount.csv", number.ToString());
         }
     }
 }

@@ -45,7 +45,7 @@ namespace BankLogic
 
         public void AddAccount() // CHANGE WHEN ACCOUNT CTOR DONE
         {
-            CustomerAccounts.Add(new Account());
+            CustomerAccounts.Add(new Account(CustomerID, AccountType.SavingsAccount));
         }
     }
 }
