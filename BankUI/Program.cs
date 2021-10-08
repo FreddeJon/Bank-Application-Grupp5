@@ -8,6 +8,19 @@ namespace BankUI
 
         public static void Main(string[] args)
         {
+
+
+            string text = "19931207";
+            if (text.ValidateCustomerID())
+            {
+                Console.WriteLine($"{text} validated");
+            }
+            else
+            {
+                Console.WriteLine($"{text} not valid");
+            }
+            Console.ReadLine();
+
             bool showMenu = true;
             while (showMenu)
             {
