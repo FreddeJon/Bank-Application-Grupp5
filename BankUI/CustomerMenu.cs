@@ -25,7 +25,7 @@ namespace BankUI
                 }
                 else if (customerID.ValidateCustomerID())
                 {
-                    if (customerID.CustomerExist())
+                    if (customerID.CustomerExists())
                     {
                         CurrentCustomer = Bank.GetCustomerByCustomerID(customerID);
                         quit = true;
