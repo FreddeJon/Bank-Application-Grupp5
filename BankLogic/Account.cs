@@ -5,7 +5,6 @@
     {
         SavingsAccount,
         SpendingAccount,
-        //CreditAccount?
     }
     public class Account
     {
@@ -14,12 +13,6 @@
         public AccountType AccountType { get; }
         public decimal AccountBalance { get; private set; }
         public decimal Interest { get; }
-
-
-        //Default Constructor
-        public Account()
-        {
-        }
 
         //Constructor
         public Account(long accountId, AccountType accountType )
@@ -70,7 +63,7 @@
 
         public override string ToString()
         {
-            return base.ToString();
+            return $"[{AccountNumber}]:{AccountType}:{AccountBalance:C}";
         }
     }
 }
