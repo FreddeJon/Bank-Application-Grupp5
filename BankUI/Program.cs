@@ -8,7 +8,6 @@ namespace BankUI
 
         public static void Main(string[] args)
         {
-            
             bool showMenu = true;
             while (showMenu)
             {
@@ -20,11 +19,37 @@ namespace BankUI
             string name, lastname;
             long personnr;
 
-            
+            /*
+             * TODO
+             * class AddCustomer, 
+             * Regex validating name. Turn string.ToLower first letter to upper, only letters
+             * validating customer id: must be YYYYMMDD cant already exists user with that id
+             * 
+             * 
+             * class ShowCustomerMenu
+             * Change name
+             * Delete account
+             * 
+             * 
+             * Class AccountMenu
+             * create account validate?
+             * delete account validate?
+             * deposit to account Validate?
+             * withdraw from account validate?
+             * 
+             * 
+             * seperate class for validating?
+             * Class Validate
+             * methods
+             * validate name
+             * validate customerID
+             * validate ...
+             */
+
             Console.Clear();
             Console.WriteLine("Choose an option:");
             Console.WriteLine("1. Add Customer: "); // class AddCustomer
-            Console.WriteLine("2. Remove Customer"); // class Remove
+            Console.WriteLine("2. Show Customer");// class ShowCustomer
             Console.WriteLine("3. Show All Customers");
             Console.WriteLine("4. Exit");
             Console.Write("\r\nSelect an option: ");
@@ -41,7 +66,7 @@ namespace BankUI
                     Console.WriteLine("Please Enter your Personnummer: ");
                     personnr = Convert.ToInt32(Console.ReadLine());
 
-                    Bank.AddCustomer(personnr, name, lastname);
+                    Bank.AddCustomer(name, lastname, personnr);
                     Console.WriteLine("Press a key to continue");
                     Console.ReadKey();
                     return true;
