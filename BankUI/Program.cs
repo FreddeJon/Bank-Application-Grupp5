@@ -1,9 +1,5 @@
 ﻿using BankLogic;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BankUI
 {
@@ -27,8 +23,8 @@ namespace BankUI
             
             Console.Clear();
             Console.WriteLine("Choose an option:");
-            Console.WriteLine("1. Add Customer: ");
-            Console.WriteLine("2. Remove Customer");
+            Console.WriteLine("1. Add Customer: "); // class AddCustomer
+            Console.WriteLine("2. Remove Customer"); // class Remove
             Console.WriteLine("3. Show All Customers");
             Console.WriteLine("4. Exit");
             Console.Write("\r\nSelect an option: ");
