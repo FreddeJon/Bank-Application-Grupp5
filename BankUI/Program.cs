@@ -54,6 +54,7 @@ namespace BankUI
                     personnr = Convert.ToInt32(Console.ReadLine());
 
                     //Bank.RemoveCustomer(personnr); Funkade inte
+                    Bank.RemoveCustomer(personnr);
                     Console.WriteLine("Press a key to continue");
                     Console.ReadKey();
                     return true;
