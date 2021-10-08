@@ -24,7 +24,7 @@ namespace BankLogic
         }
 
 
-        public long GetCustomerID()
+        public string GetCustomerID()
         {
             return CustomerID;
         }
