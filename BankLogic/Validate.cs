@@ -60,6 +60,7 @@ namespace BankLogic
         public static bool CustomerExist(this string customerID)
         {
             var exists = Bank.GetCustomers().Where(x => x.GetCustomerID() == customerID).ToList();
+            return exists == null;
         }
     }
 }

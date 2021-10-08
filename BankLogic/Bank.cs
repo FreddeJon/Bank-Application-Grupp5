@@ -36,16 +36,11 @@ namespace BankLogic
             return CustomerList;
         }
 
-        public static List<Customer> GetCustomerByCustomerID(string id)
-        {
-            foreach (var customer in CustomerList.Where(c => c.GetCustomerID() == id))
-            {
+        public static Customer GetCustomerByCustomerID(string id) => CustomerList.FirstOrDefault(x => x.GetCustomerID() == id);
 
-                Console.WriteLine($"Firstname: {customer.FirstName} | Lastname: {customer.LastName}");
 
-            }
-            return CustomerList;
-        }
+
+
 
         public static List<Customer> RemoveCustomer(string id)
         {

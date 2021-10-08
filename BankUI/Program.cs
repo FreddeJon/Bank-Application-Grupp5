@@ -9,19 +9,19 @@ namespace BankUI
         public static void Main(string[] args)
         {
 
-            // Test
-            string text = "19930107";
-            if (text.ValidateCustomerID())
-            {
-                Console.WriteLine($"{text} validated");
-            }
-            else
-            {
-                Console.WriteLine($"{text} not valid");
-            }
-            Console.ReadLine();
-            // Test
-             
+            //// Test
+            //string text = "19930107";
+            //if (text.ValidateCustomerID())
+            //{
+            //    Console.WriteLine($"{text} validated");
+            //}
+            //else
+            //{
+            //    Console.WriteLine($"{text} not valid");
+            //}
+            //Console.ReadLine();
+            //// Test
+            Bank.AddCustomer("fredrik",  "jonson", "19930507");
             bool showMenu = true;
             while (showMenu)
             {
@@ -84,13 +84,7 @@ namespace BankUI
                     Console.ReadKey();
                     return true;
                 case "2":
-                    Console.WriteLine("Please Enter Personnummer to remove: ");
-                    personnr = Console.ReadLine();
-
-                    //Bank.RemoveCustomer(personnr); Funkade inte
-                    Bank.RemoveCustomer(personnr);
-                    Console.WriteLine("Press a key to continue");
-                    Console.ReadKey();
+                    CustomerMenu.Start();
                     return true;
                 case "3":
                     Bank.GetCustomers(); 
