@@ -15,7 +15,7 @@
         public decimal Interest { get; }
 
         //Constructor
-        public Account(string accountId, AccountType accountType )
+        public Account(string accountId, AccountType accountType)
         {
             AccountNumber = Bank.GetUniqueAccountNumber();
             AccountID = accountId;
@@ -30,7 +30,30 @@
             }
         }
 
-       
+        // Deposit
+        public bool Deposit(decimal amount)
+        {
+            bool validated = false;
+            if(amount > 0)
+            {
+                AccountBalance += amount;
+                validated = true;
+            }
+            return validated;
+        }
+
+        // Withdraw
+        public decimal 
+
+
+
+
+
+
+
+
+
+
         //Get the account number and return it
         public long GetAccountNumber()
         {
@@ -44,7 +67,7 @@
         }
 
         //Get the account type and return it
-        public AccountType accountType()
+        public AccountType GetAccountType()
         {
             return AccountType;
         }

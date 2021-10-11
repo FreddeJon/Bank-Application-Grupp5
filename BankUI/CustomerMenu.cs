@@ -8,9 +8,9 @@ using System.Threading;
 
 namespace BankUI
 {
-    class CustomerMenu
+    public class CustomerMenu
     {
-        private static Customer CurrentCustomer { get; set; }
+        private static Customer CurrentCustomer;
 
 
         public static void Start()
@@ -59,13 +59,10 @@ namespace BankUI
                 {
                     case "1": // AccountMenu finns inte just nu
                         break;
-                    case "2":
+                    case "2": // Change name
                         break;
                     case "3": // Get Customer, get are you sure (Y/N) Return account fundings and interest then delete
-                        if (DeleteCustomer())
-                        {
-                            quit = true;
-                        }
+                        if (DeleteCustomer()) quit = true;
                         break;
                     case "4": // Exit
                         quit = true;
@@ -92,13 +89,27 @@ namespace BankUI
                 switch (Console.ReadLine().ToLower().Trim())
                 {
                     case "y":
-                        for(int i = 0; i < 3; i++)
+                        for (int i = 0; i < 3; i++)
                         {
                             Console.Write(".. ");
                             Thread.Sleep(400);
                         }
 
-                        Console.WriteLine("Deleted enter to continue");
+                        decimal total = 0;
+                        decimal interest = 0;
+
+                        foreach (var account in CurrentCustomer.GetCustomerAccounts())
+                        {
+                            total += account.GetAccountBalance() * account.GetInterest();
+                            interest += (account.GetAccountBalance() * account.GetInterest()) - account.GetAccountBalance();
+                            Console.WriteLine($"Deleted account [{account.GetAccountNumber()}]");
+                        }
+                        Console.WriteLine($"Deleted Customer: {CurrentCustomer.GetName()}\nPayout: {total:C}\nInterest: {interest:C}");
+
+                        Bank.RemoveCustomer(CurrentCustomer.GetCustomerID());
+
+
+                        Console.WriteLine("Enter to continue");
                         Console.ReadLine();
 
                         quit = true;

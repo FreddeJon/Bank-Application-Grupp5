@@ -22,6 +22,10 @@ namespace BankUI
             //Console.ReadLine();
             //// Test
             Bank.AddCustomer("fredrik",  "jonson", "19930507");
+
+
+
+
             bool showMenu = true;
             while (showMenu)
             {
