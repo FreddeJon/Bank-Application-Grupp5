@@ -43,7 +43,10 @@
         }
 
         // Withdraw
-        public decimal 
+        public decimal Withdraw()
+        {
+            return 1;
+        }
 
 
 
