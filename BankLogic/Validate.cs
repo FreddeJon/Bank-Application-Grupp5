@@ -18,8 +18,11 @@ namespace BankLogic
         {
             return Regex.Match(name, "^[a-öA-Ö]*$").Success && !string.IsNullOrWhiteSpace(name);
         }
+
+
+
         /// <summary>
-        /// Returns truer if valid customerID format YYYYMMDD Input should be a string
+        /// Returns true if valid customerID format YYYYMMDD Input should be a string
         /// </summary>
         /// <param name="customerID"></param>
         /// <returns></returns>
@@ -57,6 +60,12 @@ namespace BankLogic
         }
 
 
+
+        /// <summary>
+        /// Checks if customer exists
+        /// </summary>
+        /// <param name="customerID"></param>
+        /// <returns></returns>
         public static bool CustomerExists(this string customerID)
         {
             var exists = Bank.GetCustomers().Where(x => x.GetCustomerID() == customerID).ToList();
