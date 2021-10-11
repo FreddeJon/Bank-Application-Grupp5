@@ -10,7 +10,6 @@ namespace BankLogic
         public static List<Customer> CustomerList { get; set; } = new List<Customer>();
 
 
-
         public static bool AddCustomer(string fname, string lname, string id)
         {
             var customerid = CustomerList.FirstOrDefault(x => x.GetCustomerID() == id);
@@ -31,9 +30,6 @@ namespace BankLogic
 
 
         public static Customer GetCustomerByCustomerID(string id) => CustomerList.FirstOrDefault(x => x.GetCustomerID() == id);
-
-
-
 
 
         public static List<Customer> RemoveCustomer(string id)
