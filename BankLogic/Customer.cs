@@ -9,8 +9,8 @@ namespace BankLogic
         public string LastName { get; private set; }
         public string CustomerID { get; } //Socialnumber
         private List<Account> CustomerAccounts { get; set; } = new List<Account>();
-        
 
+        
         public Customer(string firstname, string lastname, string customerid)
         {
             FirstName = firstname;
@@ -37,6 +37,15 @@ namespace BankLogic
         /// <returns></returns>
         public Account GetAccountByAccountNumber(long accountNumber) => CustomerAccounts.FirstOrDefault(x => x.GetAccountNumber() == accountNumber);
 
+
+        public void RemoveAccount(long accountNumber)
+        {
+            var accountToDelete = GetAccountByAccountNumber(accountNumber);
+            if (accountToDelete != null)
+            {
+                CustomerAccounts.Remove(accountToDelete);
+            }
+        }
 
         public List<Account> GetCustomerAccounts()
         {

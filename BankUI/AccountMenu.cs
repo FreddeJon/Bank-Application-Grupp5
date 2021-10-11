@@ -9,9 +9,11 @@ namespace BankUI
 {
     public class AccountMenu
     {
+
+        private static Customer CurrentCustomer;
         public static void Start()
         {
-
+            CurrentCustomer = CustomerMenu.CurrentCustomer;
             //While loop, switch
             bool quit = false;
             while (!quit)
@@ -20,15 +22,38 @@ namespace BankUI
                 switch (Console.ReadLine())
                 {
                     case "1": // Deposit
-                        Deposit();
+                        if (CurrentCustomer.GetCustomerAccounts().Count > 0)
+                        {
+                            Deposit();
+                        }
+                        else
+                        {
+                            Console.WriteLine("You dont have any accounts");
+                        }
                         break;
                     case "2": // Withdraw
-                        Withdraw();
+                        if (CurrentCustomer.GetCustomerAccounts().Count > 0)
+                        {
+                            Withdraw();
+                        }
+                        else
+                        {
+                            Console.WriteLine("You dont have any accounts");
+                        }
+
                         break;
                     case "3": // Add Account
                         AddAccount();
                         break;
                     case "4": // Delete Account
+                        if (CurrentCustomer.GetCustomerAccounts().Count > 0)
+                        {
+                            DeleteAccount();
+                        }
+                        else
+                        {
+                            Console.WriteLine("You dont have any accounts");
+                        }
                         break;
                     case "5": // Exit
                         quit = true;
@@ -56,7 +81,7 @@ namespace BankUI
                 }
                 else if (long.TryParse(userInput, out long accountNumber))
                 {
-                    Account currentAccount = CustomerMenu.CurrentCustomer.GetAccountByAccountNumber(accountNumber);
+                    Account currentAccount = CurrentCustomer.GetAccountByAccountNumber(accountNumber);
                     if (currentAccount != null)
                     {
                         selectedAccount = currentAccount;
@@ -79,8 +104,11 @@ namespace BankUI
         //Deposit
         private static void Deposit()
         {
-            Account account = SelectAccount();
             bool quit = false;
+            var account = SelectAccount();
+
+            if (account == null) quit = true;
+
             while (!quit)
             {
                 Console.WriteLine("Enter amount to deposit [e] to end session");
@@ -114,8 +142,11 @@ namespace BankUI
 
         private static void Withdraw()
         {
-            Account account = SelectAccount();
             bool quit = false;
+            var account = SelectAccount();
+
+            if (account == null) quit = true;
+
             while (!quit)
             {
                 Console.WriteLine("Enter amount to withdraw [e] to end session");
@@ -161,10 +192,10 @@ namespace BankUI
                     case "e":
                         break;
                     case "saving":
-                        CustomerMenu.CurrentCustomer.AddAccount(AccountType.SavingsAccount);
+                        CurrentCustomer.AddAccount(AccountType.SavingsAccount);
                         break;
                     case "spending":
-                        CustomerMenu.CurrentCustomer.AddAccount(AccountType.SpendingAccount);
+                        CurrentCustomer.AddAccount(AccountType.SpendingAccount);
                         break;
                     default:
                         quit = false;
@@ -172,6 +203,22 @@ namespace BankUI
                         break;
                 }
             } while (!quit);
+        }
+
+        private static void DeleteAccount()
+        {
+            bool quit = false;
+            Account account = SelectAccount();
+
+            if (account == null) quit = true;
+
+            while (!quit)
+            {
+                var total = account.GetAccountBalance() * account.GetInterest();
+                var interest = total - account.GetAccountBalance();
+                Console.WriteLine($"Deleted account [{account.GetAccountNumber}]\nPayout: {total:C}\nInterest: {interest:C}");
+                CurrentCustomer.RemoveAccount(account.AccountNumber());
+            }
         }
     }
 }
