@@ -51,10 +51,10 @@ namespace BankUI
             bool quit = false;
             while (!quit)
             {
-                Console.WriteLine("1. Show Accounts\n2. Change Name\n3. Delete account\n4. Exit");
+                Console.WriteLine("1. Accounts\n2. Change Name\n3. Delete Customer\n4. Exit");
                 switch (Console.ReadLine())
                 {
-                    case "1": // AccountMenu finns inte just nu
+                    case "1": // Account Menu
                         AccountMenu.Start();
                         break;
                     case "2": // Change name
