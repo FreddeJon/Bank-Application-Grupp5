@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace BankLogic
 {
@@ -29,6 +30,13 @@ namespace BankLogic
             return CustomerID;
         }
 
+        /// <summary>
+        /// Returns Account if found else returns null
+        /// </summary>
+        /// <param name="accountNumber"></param>
+        /// <returns></returns>
+        public Account GetAccountByAccountNumber(long accountNumber) => CustomerAccounts.FirstOrDefault(x => x.GetAccountNumber() == accountNumber);
+
 
         public List<Account> GetCustomerAccounts()
         {
@@ -43,9 +51,9 @@ namespace BankLogic
         }
 
 
-        public void AddAccount() // CHANGE WHEN ACCOUNT CTOR DONE
+        public void AddAccount(AccountType accountType) // CHANGE WHEN ACCOUNT CTOR DONE
         {
-            CustomerAccounts.Add(new Account(CustomerID, AccountType.SavingsAccount));
+            CustomerAccounts.Add(new Account(CustomerID, accountType));
         }
     }
 }
