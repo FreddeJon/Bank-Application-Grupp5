@@ -74,16 +74,27 @@ namespace BankUI
             switch (Console.ReadLine())
             {
                 case "1":
+                    names:
                     Console.WriteLine("Please Enter your Name: ");
                     name = Console.ReadLine();
 
                     Console.WriteLine("Please Enter your Last Name: ");
                     lastname = Console.ReadLine();
+                    if (!name.ValidateName() || !lastname.ValidateName())
+                    {
+                        Console.WriteLine("Name or Last Name is not correct! try again");
+                        goto names;
+                    }
 
+                    person:
                     Console.WriteLine("Please Enter your Personnummer: ");
                     personnr = Console.ReadLine();
-
-                    Bank.AddCustomer(name, lastname, personnr);
+                    if (!personnr.ValidateCustomerID())
+                    {
+                        Console.WriteLine("Not correct! YYYYMMDD try again");
+                        goto person;
+                    }
+                    Bank.AddCustomer(name.uppercase(), lastname.uppercase(), personnr);
                     Console.WriteLine("Press a key to continue");
                     Console.ReadKey();
                     return true;
@@ -91,6 +102,7 @@ namespace BankUI
                     CustomerMenu.Start();
                     return true;
                 case "3":
+                    
                     Bank.GetCustomers(); 
                     Console.WriteLine("Press a key to continue");
                     Console.ReadKey();

@@ -6,6 +6,16 @@ namespace BankLogic
     public static class Validate
     {
         /// <summary>
+        /// Returns name uppercase if name is valid
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public static string uppercase(this string name)
+        {
+            string s = name[0].ToString().ToUpper() + name.Substring(1);
+            return s;
+        }
+        /// <summary>
         /// Returns true if name is valid
         /// </summary>
         /// <param name="name"></param>
