@@ -7,7 +7,7 @@ namespace BankUI
 {
     public class CustomerMenu
     {
-        private static Customer CurrentCustomer;
+        public static Customer CurrentCustomer;
 
 
         public static void Start()
@@ -55,6 +55,7 @@ namespace BankUI
                 switch (Console.ReadLine())
                 {
                     case "1": // AccountMenu finns inte just nu
+                        AccountMenu.Start();
                         break;
                     case "2": // Change name
                         break;
