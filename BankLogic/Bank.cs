@@ -30,13 +30,9 @@ namespace BankLogic
         public static Customer GetCustomerByCustomerID(string id) => CustomerList.FirstOrDefault(x => x.GetCustomerID() == id);
 
 
-        public static List<Customer> RemoveCustomer(string id)
+        public static void RemoveCustomer(string id)
         {
-            foreach (var customer in CustomerList.Where(c => c.GetCustomerID() == id))
-            {
-                CustomerList.Remove(customer);
-            }
-            return CustomerList;
+            CustomerList.Remove(GetCustomerByCustomerID(id));
         }
 
         public static long GetUniqueAccountNumber()
