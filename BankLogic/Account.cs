@@ -1,4 +1,6 @@
-﻿namespace BankLogic
+﻿using System;
+
+namespace BankLogic
 {
 
     public enum AccountType
@@ -8,11 +10,11 @@
     }
     public class Account
     {
-        public long AccountNumber { get; }
-        public string AccountID { get; }
-        public AccountType AccountType { get; }
-        public decimal AccountBalance { get; private set; }
-        public decimal Interest { get; }
+        private long AccountNumber { get; }
+        private string AccountID { get; }
+        private AccountType AccountType { get; }
+        private decimal AccountBalance { get; set; }
+        private decimal Interest { get; }
 
         //Constructor
         public Account(string accountId, AccountType accountType)
@@ -34,19 +36,30 @@
         public bool Deposit(decimal amount)
         {
             bool validated = false;
-            if(amount > 0)
+            if (amount > 0)
             {
                 AccountBalance += amount;
+                Console.WriteLine($"Added {amount:C} to [{AccountNumber}]\nNew balance: {AccountBalance:C}");
                 validated = true;
             }
             return validated;
         }
 
+
+
         // Withdraw
-        public decimal Withdraw()
+        public bool Withdraw(decimal amount)
         {
-            return 1;
+            bool validated = false;
+            if (AccountBalance - amount >= 0)
+            {
+                AccountBalance -= amount;
+                Console.WriteLine($"Withdraw {amount:C}\n[{AccountNumber}]Balance: {AccountBalance:C}");
+                validated = true;
+            }
+            return validated;
         }
+
 
 
 

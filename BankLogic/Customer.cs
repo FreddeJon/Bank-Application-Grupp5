@@ -1,14 +1,15 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace BankLogic
 {
     public class Customer
     {
-        public string FirstName { get; private set; }
-        public string LastName { get; private set; }
-        public string CustomerID { get; } //Socialnumber
+        private string FirstName { get; set; }
+        private string LastName { get; set; }
+        private string CustomerID { get; } //Socialnumber
         private List<Account> CustomerAccounts { get; set; } = new List<Account>();
-        
+
 
         public Customer(string firstname, string lastname, string customerid)
         {
@@ -18,21 +19,28 @@ namespace BankLogic
         }
 
 
-        public string GetName()
+        public string GetName() => FirstName + " " + LastName;
+
+        public string GetLastName() => LastName;
+        public string GetCustomerID() => CustomerID;
+        public List<Account> GetCustomerAccounts() => CustomerAccounts;
+
+
+        /// <summary>
+        /// Returns Account if found else returns null
+        /// </summary>
+        /// <param name="accountNumber"></param>
+        /// <returns></returns>
+        public Account GetAccountByAccountNumber(long accountNumber) => CustomerAccounts.FirstOrDefault(x => x.GetAccountNumber() == accountNumber);
+
+
+        public void RemoveAccount(long accountNumber)
         {
-            return FirstName + " " + LastName;
-        }
-
-
-        public string GetCustomerID()
-        {
-            return CustomerID;
-        }
-
-
-        public List<Account> GetCustomerAccounts()
-        {
-            return CustomerAccounts;
+            var accountToDelete = GetAccountByAccountNumber(accountNumber);
+            if (accountToDelete != null)
+            {
+                CustomerAccounts.Remove(accountToDelete);
+            }
         }
 
 
@@ -43,9 +51,12 @@ namespace BankLogic
         }
 
 
-        public void AddAccount() // CHANGE WHEN ACCOUNT CTOR DONE
+        public void AddAccount(AccountType accountType) 
         {
-            CustomerAccounts.Add(new Account(CustomerID, AccountType.SavingsAccount));
+            CustomerAccounts.Add(new Account(CustomerID, accountType));
         }
+
+
+        public override string ToString() => $"{GetName()} {CustomerID}";
     }
 }
