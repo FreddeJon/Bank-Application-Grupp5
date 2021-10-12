@@ -5,6 +5,15 @@ namespace BankLogic
 {
     public static class Validate
     {
+        public static string FirstToUpper(this string name)
+        {
+            string change = name.ToLower();
+            string s = change[0].ToString().ToUpper() + change.Substring(1);
+
+            return s;
+        }
+
+
         /// <summary>
         /// Returns true if name is valid
         /// </summary>

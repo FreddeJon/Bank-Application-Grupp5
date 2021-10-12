@@ -6,11 +6,11 @@ namespace BankLogic
     public class Customer
     {
         private string FirstName { get; set; }
-        private string LastName { get;  set; }
+        private string LastName { get; set; }
         private string CustomerID { get; } //Socialnumber
         private List<Account> CustomerAccounts { get; set; } = new List<Account>();
 
-        
+
         public Customer(string firstname, string lastname, string customerid)
         {
             FirstName = firstname;
@@ -19,16 +19,12 @@ namespace BankLogic
         }
 
 
-        public string GetName()
-        {
-            return FirstName + " " + LastName;
-        }
+        public string GetName() => FirstName + " " + LastName;
 
+        public string GetLastName() => LastName;
+        public string GetCustomerID() => CustomerID;
+        public List<Account> GetCustomerAccounts() => CustomerAccounts;
 
-        public string GetCustomerID()
-        {
-            return CustomerID;
-        }
 
         /// <summary>
         /// Returns Account if found else returns null
@@ -47,11 +43,6 @@ namespace BankLogic
             }
         }
 
-        public List<Account> GetCustomerAccounts()
-        {
-            return CustomerAccounts;
-        }
-
 
         public void ChangeName(string firstname, string lastname)
         {
@@ -60,9 +51,12 @@ namespace BankLogic
         }
 
 
-        public void AddAccount(AccountType accountType) // CHANGE WHEN ACCOUNT CTOR DONE
+        public void AddAccount(AccountType accountType) 
         {
             CustomerAccounts.Add(new Account(CustomerID, accountType));
         }
+
+
+        public override string ToString() => $"{GetName()} {CustomerID}";
     }
 }
