@@ -114,22 +114,31 @@ namespace BankLogic
             {
                 if (!string.IsNullOrWhiteSpace(line))
                 {
-                    var stringList = line.Split(",");
-                    long accountNumber = long.Parse(stringList[0]);
-                    string accountID = stringList[1];
-                    AccountType accountType;
-                    if (stringList[2].ToLower() == "savings")
+                    try
                     {
-                        accountType = AccountType.Saving;
-                    }
-                    else
-                    {
-                        accountType = AccountType.Spending;
-                    }
-                    decimal accountBalance = decimal.Parse(stringList[4]);
-                    decimal interest = long.Parse(stringList[4]);
+                        var stringList = line.Split(";");
+                        long accountNumber = long.Parse(stringList[0]);
+                        string accountID = stringList[1];
+                        AccountType accountType;
+                        if (stringList[2].ToLower() == "savings")
+                        {
+                            accountType = AccountType.Saving;
+                        }
+                        else
+                        {
+                            accountType = AccountType.Spending;
+                        }
+                        decimal accountBalance = decimal.Parse(stringList[3]);
+                        decimal interest = decimal.Parse(stringList[4]);
 
-                    loadedAccounts.Add(new Account(accountNumber, accountID, accountType, accountBalance, interest));
+                        loadedAccounts.Add(new Account(accountNumber, accountID, accountType, accountBalance, interest));
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e);
+                        Console.ReadLine();
+                    }
+
                 }
             }
             return loadedAccounts;
@@ -151,7 +160,7 @@ namespace BankLogic
             int i = 0;
             foreach (var account in allAccounts)
             {
-                accountsToSave[i] = $"{account.AccountNumber},{account.AccountID},{account.AccountType},{account.AccountBalance},{account.Interest}";
+                accountsToSave[i] = $"{account.AccountNumber};{account.AccountID};{account.AccountType};{account.AccountBalance};{account.Interest}";
                 i++;
             }
 
