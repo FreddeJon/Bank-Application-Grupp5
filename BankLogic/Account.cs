@@ -10,11 +10,11 @@ namespace BankLogic
     }
     public class Account
     {
-        public long AccountNumber { get; }
-        public string AccountID { get; }
-        public AccountType AccountType { get; }
-        public decimal AccountBalance { get; private set; }
-        public decimal Interest { get; }
+        private long AccountNumber { get; }
+        private string AccountID { get; }
+        private AccountType AccountType { get; }
+        private decimal AccountBalance { get; set; }
+        private decimal Interest { get; }
 
         //Constructor
         public Account(string accountId, AccountType accountType)

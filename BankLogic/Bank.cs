@@ -45,7 +45,7 @@ namespace BankLogic
 
             _ = long.TryParse(read, out long currentAccount);
 
-            if (currentAccount > 0)
+            if (currentAccount >= 1002)
             {
                 SaveUniqueAccountNumber(currentAccount + 1);
                 return currentAccount;

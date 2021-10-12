@@ -5,9 +5,9 @@ namespace BankLogic
 {
     public class Customer
     {
-        public string FirstName { get; private set; }
-        public string LastName { get; private set; }
-        public string CustomerID { get; } //Socialnumber
+        private string FirstName { get; set; }
+        private string LastName { get;  set; }
+        private string CustomerID { get; } //Socialnumber
         private List<Account> CustomerAccounts { get; set; } = new List<Account>();
 
         
