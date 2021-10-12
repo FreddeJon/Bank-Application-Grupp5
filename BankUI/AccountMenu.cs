@@ -14,6 +14,7 @@ namespace BankUI
             bool quit = false;
             while (!quit)
             {
+                AccountHeader();
                 Console.WriteLine("1. Deposit\n2. Withdraw\n3. Add Account\n4. Delete Account\n5. Back");
                 switch (Console.ReadLine())
                 {
@@ -67,6 +68,7 @@ namespace BankUI
             Account selectedAccount = null;
             while (!quit)
             {
+                AccountHeader();
                 Console.WriteLine("Select by account number [e] to exit");
                 Console.Write("Enter: ");
 
@@ -107,6 +109,7 @@ namespace BankUI
 
             while (!quit)
             {
+                AccountHeader();
                 Console.WriteLine("Enter amount to deposit [e] to end session");
                 Console.Write("Enter: ");
 
@@ -145,6 +148,7 @@ namespace BankUI
 
             while (!quit)
             {
+                AccountHeader();
                 Console.WriteLine("Enter amount to withdraw [e] to end session");
                 Console.Write("Enter: ");
 
@@ -179,6 +183,7 @@ namespace BankUI
             do
             {
                 quit = true;
+                AccountHeader();
                 Console.WriteLine("Which type of account do you want do open [e] to end");
                 Console.Write("Saving/Spending: ");
                 string userInput = Console.ReadLine().ToLower();
@@ -214,6 +219,17 @@ namespace BankUI
                 var interest = total - account.GetAccountBalance();
                 Console.WriteLine($"Deleted account [{account.GetAccountNumber()}]\nPayout: {total:C}\nInterest: {interest:C}");
                 CurrentCustomer.RemoveAccount(account.GetAccountNumber());
+            }
+        }
+
+        private static void AccountHeader()
+        {
+            if (CurrentCustomer.GetCustomerAccounts().Count > 0)
+            {
+                foreach (var account in CurrentCustomer.GetCustomerAccounts())
+                {
+                    Console.WriteLine(account.ToString());
+                }
             }
         }
     }
