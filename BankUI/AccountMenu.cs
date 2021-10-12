@@ -26,6 +26,7 @@ namespace BankUI
                         else
                         {
                             Console.WriteLine("You dont have any accounts");
+                            Program.PushToContinue();
                         }
                         break;
                     case "2": // Withdraw
@@ -36,6 +37,7 @@ namespace BankUI
                         else
                         {
                             Console.WriteLine("You dont have any accounts");
+                            Program.PushToContinue();
                         }
 
                         break;
@@ -50,6 +52,7 @@ namespace BankUI
                         else
                         {
                             Console.WriteLine("You dont have any accounts");
+                            Program.PushToContinue();
                         }
                         break;
                     case "5": // Exit
@@ -57,6 +60,7 @@ namespace BankUI
                         break;
                     default:
                         Console.WriteLine("Invalid input");
+                        Program.PushToContinue();
                         break;
                 }
             }
