@@ -21,7 +21,7 @@ namespace BankUI
             //}
             //Console.ReadLine();
             //// Test
-            Bank.AddCustomer("fredrik",  "jonson", "19930507");
+            Bank.AddCustomer("fredrik".FirstToUpper(),  "jonson".FirstToUpper(), "19930507");
 
 
 
@@ -41,32 +41,12 @@ namespace BankUI
              * class AddCustomer, 
              * Regex validating name. Turn string.ToLower first letter to upper, only letters
              * validating customer id: must be YYYYMMDD cant already exists user with that id
-             * 
-             * 
-             * class ShowCustomerMenu
-             * Change name
-             * Delete account
-             * 
-             * 
-             * Class AccountMenu
-             * create account validate?
-             * delete account validate?
-             * deposit to account Validate?
-             * withdraw from account validate?
-             * 
-             * 
-             * seperate class for validating?
-             * Class Validate
-             * methods
-             * validate name
-             * validate customerID
-             * validate ...
              */
 
             Console.Clear();
-            Console.WriteLine("Chose an option:");
-            Console.WriteLine("1. Add Customer: "); // class AddCustomer
-            Console.WriteLine("2. Show Customer");// class ShowCustomer
+            Console.WriteLine("Choose an option:");
+            Console.WriteLine("1. Add Customer: "); 
+            Console.WriteLine("2. Show Customer");
             Console.WriteLine("3. Show All Customers");
             Console.WriteLine("4. Exit");
             Console.Write("\r\nSelect an option: ");
@@ -91,7 +71,10 @@ namespace BankUI
                     CustomerMenu.Start();
                     return true;
                 case "3":
-                    Bank.GetCustomers(); 
+                    foreach (var cust in Bank.GetCustomers())
+                    {
+                        Console.WriteLine(cust.ToString());
+                    }
                     Console.WriteLine("Press a key to continue");
                     Console.ReadKey();
                     return true;
