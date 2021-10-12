@@ -93,7 +93,7 @@ namespace BankUI
                             Console.Write(".. ");
                             Thread.Sleep(400);
                         }
-
+                        Console.WriteLine();
                         decimal total = 0;
                         decimal interest = 0;
 
@@ -104,7 +104,7 @@ namespace BankUI
                             Console.WriteLine($"Deleted account [{account.GetAccountNumber()}]");
                         }
                         Console.WriteLine($"Deleted Customer: {CurrentCustomer.GetName()}\nPayout: {total:C}\nInterest: {interest:C}");
-
+                        string id = CurrentCustomer.GetCustomerID();
                         Bank.RemoveCustomer(CurrentCustomer.GetCustomerID());
 
 
