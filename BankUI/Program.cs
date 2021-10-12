@@ -94,7 +94,7 @@ namespace BankUI
                         Console.WriteLine("Not correct! YYYYMMDD try again");
                         goto person;
                     }
-                    Bank.AddCustomer(name.uppercase(), lastname.uppercase(), personnr);
+                    Bank.AddCustomer(name.UpperCase(), lastname.UpperCase(), personnr);
                     Console.WriteLine("Press a key to continue");
                     Console.ReadKey();
                     return true;
@@ -102,8 +102,10 @@ namespace BankUI
                     CustomerMenu.Start();
                     return true;
                 case "3":
-                    
-                    Bank.GetCustomers(); 
+                    foreach (var cust in Bank.GetCustomers())
+                    {
+                        Console.WriteLine(cust.ToString());
+                    }
                     Console.WriteLine("Press a key to continue");
                     Console.ReadKey();
                     return true;
