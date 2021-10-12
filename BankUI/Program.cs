@@ -66,7 +66,7 @@ namespace BankUI
             Console.Clear();
             Console.WriteLine("Choose an option:");
             Console.WriteLine("1. Add Customer: "); // class AddCustomer
-            Console.WriteLine("2. Show Customer");// class ShowCustomer
+            Console.WriteLine("2. Choose Customer");// class ShowCustomer
             Console.WriteLine("3. Show All Customers");
             Console.WriteLine("4. Exit");
             Console.Write("\r\nSelect an option: ");
@@ -102,8 +102,11 @@ namespace BankUI
                     CustomerMenu.Start();
                     return true;
                 case "3":
-                    
-                    Bank.GetCustomers(); 
+                    foreach (var item in Bank.GetCustomers())
+                    {
+                        Console.WriteLine(item.FirstName + " " + item.LastName);
+                    }
+                    Bank.GetCustomers();
                     Console.WriteLine("Press a key to continue");
                     Console.ReadKey();
                     return true;

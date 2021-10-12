@@ -15,7 +15,7 @@ namespace BankUI
             bool quit = false;
             while (!quit)
             {
-                Console.WriteLine("Enter CustomerID [e] to exit");
+                Console.WriteLine("Enter Personnummer or Enter [e] to exit: ");
                 string customerID = Console.ReadLine().ToLower();
                 if (customerID == "e")    // || or    && and 
                 {

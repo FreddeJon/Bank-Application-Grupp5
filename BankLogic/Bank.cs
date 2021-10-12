@@ -27,7 +27,6 @@ namespace BankLogic
 
         public static List<Customer> GetCustomers() => CustomerList;
 
-
         public static Customer GetCustomerByCustomerID(string id) => CustomerList.FirstOrDefault(x => x.GetCustomerID() == id);
 
 
