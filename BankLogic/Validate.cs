@@ -10,7 +10,7 @@ namespace BankLogic
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
-        public static string uppercase(this string name)
+        public static string UpperCase(this string name)
         {
             string s = name[0].ToString().ToUpper() + name.Substring(1);
             return s;
