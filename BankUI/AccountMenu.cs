@@ -216,8 +216,8 @@ namespace BankUI
             {
                 var total = account.GetAccountBalance() * account.GetInterest();
                 var interest = total - account.GetAccountBalance();
-                Console.WriteLine($"Deleted account [{account.GetAccountNumber}]\nPayout: {total:C}\nInterest: {interest:C}");
-                CurrentCustomer.RemoveAccount(account.AccountNumber());
+                Console.WriteLine($"Deleted account [{account.GetAccountNumber()}]\nPayout: {total:C}\nInterest: {interest:C}");
+                CurrentCustomer.RemoveAccount(account.GetAccountNumber());
             }
         }
     }
