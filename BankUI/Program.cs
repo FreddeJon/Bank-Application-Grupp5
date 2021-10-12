@@ -24,7 +24,7 @@ namespace BankUI
             Bank.AddCustomer("fredrik".FirstToUpper(),  "jonson".FirstToUpper(), "19930507");
 
 
-
+            Bank.LoadFromTextFile();
 
             bool showMenu = true;
             while (showMenu)

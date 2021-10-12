@@ -6,7 +6,7 @@ namespace BankLogic
 {
     public static class Bank
     {
-        public static List<Customer> CustomerList { get; set; } = new List<Customer>();
+        private static List<Customer> CustomerList { get; set; } = new List<Customer>();
 
 
         public static bool AddCustomer(string fname, string lname, string id)
@@ -52,9 +52,27 @@ namespace BankLogic
                 return 1001;
             }
         }
+
+
         public static void SaveUniqueAccountNumber(long number)
         {
             File.WriteAllText(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName + "\\Data\\currentAccount.csv", number.ToString());
+        }
+
+
+        public static void LoadFromTextFile()
+        {
+            CustomerList = Customer.ReadFromCustomerFile();
+        }
+        public static void SaveToTextFile()
+        {
+            var customersToSave = new string[CustomerList.Count()];
+            int i = 0;
+            foreach (var customer in CustomerList)
+            {
+                customersToSave[i] = $"{customer.GetFirstName()},{customer.GetLastName()},{customer.GetCustomerID()}";
+            }
+            File.WriteAllLines(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName + "\\Data\\Customer.csv", customersToSave);
         }
     }
 }

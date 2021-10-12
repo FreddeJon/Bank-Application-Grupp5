@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System;
 
 namespace BankLogic
 {
@@ -20,7 +22,7 @@ namespace BankLogic
 
 
         public string GetName() => FirstName + " " + LastName;
-
+        public string GetFirstName() => FirstName;
         public string GetLastName() => LastName;
         public string GetCustomerID() => CustomerID;
         public List<Account> GetCustomerAccounts() => CustomerAccounts;
@@ -33,6 +35,7 @@ namespace BankLogic
         /// <returns></returns>
         public Account GetAccountByAccountNumber(long accountNumber) => CustomerAccounts.FirstOrDefault(x => x.GetAccountNumber() == accountNumber);
 
+        public void AddAccount(AccountType accountType) => CustomerAccounts.Add(new Account(CustomerID, accountType));
 
         public void RemoveAccount(long accountNumber)
         {
@@ -43,7 +46,6 @@ namespace BankLogic
             }
         }
 
-
         public void ChangeName(string firstname, string lastname)
         {
             FirstName = firstname;
@@ -51,12 +53,19 @@ namespace BankLogic
         }
 
 
-        public void AddAccount(AccountType accountType) 
+        public override string ToString() => $"{GetName()} {CustomerID}";
+
+        public static List<Customer> ReadFromCustomerFile()
         {
-            CustomerAccounts.Add(new Account(CustomerID, accountType));
+            var read = File.ReadAllLines(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName + "\\Data\\Customer.csv");
+            List<Customer> loadedCustomers = new();
+            foreach (var line in read)
+            {
+                var stringList = line.Split(",");
+                loadedCustomers.Add(new Customer(stringList[0], stringList[1], stringList[2]));
+            }
+            return loadedCustomers;
         }
 
-
-        public override string ToString() => $"{GetName()} {CustomerID}";
     }
 }
