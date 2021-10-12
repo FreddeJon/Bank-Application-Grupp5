@@ -64,7 +64,7 @@ namespace BankUI
              */
 
             Console.Clear();
-            Console.WriteLine("Choose an option:");
+            Console.WriteLine("Chose an option:");
             Console.WriteLine("1. Add Customer: "); // class AddCustomer
             Console.WriteLine("2. Show Customer");// class ShowCustomer
             Console.WriteLine("3. Show All Customers");
