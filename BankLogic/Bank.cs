@@ -30,10 +30,9 @@ namespace BankLogic
         public static Customer GetCustomerByCustomerID(string id) => CustomerList.FirstOrDefault(x => x.GetCustomerID() == id);
 
 
-        public static void RemoveCustomer(string id)
-        {
-            CustomerList.Remove(GetCustomerByCustomerID(id));
-        }
+        public static void RemoveCustomer(string id) => CustomerList.Remove(CustomerList.FirstOrDefault(x => x.GetCustomerID() == id));
+
+
 
         public static long GetUniqueAccountNumber()
         {
@@ -63,16 +62,22 @@ namespace BankLogic
         public static void LoadFromTextFile()
         {
             CustomerList = Customer.ReadFromCustomerFile();
+            List<Account> accountList = Account.ReadFromAccountFile();
+            foreach (var customer in CustomerList)
+            {
+                var list = accountList.Where(x => x.GetAccountId() == customer.GetCustomerID()).ToList();
+
+                foreach (var account in list)
+                {
+                    customer.AddAccount(account);
+                }
+            }
         }
         public static void SaveToTextFile()
         {
-            var customersToSave = new string[CustomerList.Count()];
-            int i = 0;
-            foreach (var customer in CustomerList)
-            {
-                customersToSave[i] = $"{customer.GetFirstName()},{customer.GetLastName()},{customer.GetCustomerID()}";
-            }
-            File.WriteAllLines(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName + "\\Data\\Customer.csv", customersToSave);
+            Customer.SaveCustomersToFile();
+            Account.SaveAccountsToFile();
+
         }
     }
 }

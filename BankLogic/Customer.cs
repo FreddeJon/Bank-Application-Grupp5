@@ -37,6 +37,8 @@ namespace BankLogic
 
         public void AddAccount(AccountType accountType) => CustomerAccounts.Add(new Account(CustomerID, accountType));
 
+        public void AddAccount(Account account) => CustomerAccounts.Add(account);
+
         public void RemoveAccount(long accountNumber)
         {
             var accountToDelete = GetAccountByAccountNumber(accountNumber);
@@ -67,5 +69,19 @@ namespace BankLogic
             return loadedCustomers;
         }
 
+        public static void SaveCustomersToFile()
+        {
+            var customersToSave = new string[Bank.GetCustomers().Count];
+            int i = 0;
+            if (customersToSave.Length > 0)
+            {
+                foreach (var customer in Bank.GetCustomers())
+                {
+                    customersToSave[i] = $"{customer.GetFirstName()},{customer.GetLastName()},{customer.GetCustomerID()}";
+                    i++;
+                }
+                File.WriteAllLines(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName + "\\Data\\Customer.csv", customersToSave);
+            }
+        }
     }
 }

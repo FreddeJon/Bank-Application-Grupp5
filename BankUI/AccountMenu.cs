@@ -204,10 +204,10 @@ namespace BankUI
                     case "e":
                         break;
                     case "saving":
-                        CurrentCustomer.AddAccount(AccountType.SavingsAccount);
+                        CurrentCustomer.AddAccount(AccountType.Saving);
                         break;
                     case "spending":
-                        CurrentCustomer.AddAccount(AccountType.SpendingAccount);
+                        CurrentCustomer.AddAccount(AccountType.Spending);
                         break;
                     default:
                         quit = false;
