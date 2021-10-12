@@ -95,6 +95,13 @@ namespace BankUI
                     return true;
             }
         }
+
+        public static void PushToContinue()
+        {
+            Console.WriteLine("Push any key to continue");
+            Console.ReadKey();
+            Console.Clear();
+        }
     }
 
 

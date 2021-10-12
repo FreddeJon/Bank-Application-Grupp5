@@ -88,11 +88,13 @@ namespace BankUI
                     else
                     {
                         Console.WriteLine("You dont have an account with that account number");
+                        Program.PushToContinue();
                     }
                 }
                 else
                 {
                     Console.WriteLine("Invalid Input");
+                    Program.PushToContinue();
                 }
             }
             return selectedAccount;
@@ -128,11 +130,14 @@ namespace BankUI
                     else
                     {
                         Console.WriteLine("You can't add a negative amount");
+                        Program.PushToContinue();
                     }
                 }
                 else
                 {
                     Console.WriteLine("Invalid Input");
+                    Program.PushToContinue();
+
                 }
             }
         }
@@ -167,11 +172,13 @@ namespace BankUI
                     else
                     {
                         Console.WriteLine("You dont have enough balance");
+                        Program.PushToContinue();
                     }
                 }
                 else
                 {
                     Console.WriteLine("Invalid Input");
+                    Program.PushToContinue();
                 }
             }
         }
@@ -201,6 +208,7 @@ namespace BankUI
                     default:
                         quit = false;
                         Console.WriteLine("Invalid Input");
+                        Program.PushToContinue();
                         break;
                 }
             } while (!quit);
