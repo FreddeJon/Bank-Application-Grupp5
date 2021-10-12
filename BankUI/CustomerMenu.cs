@@ -58,6 +58,7 @@ namespace BankUI
                         AccountMenu.Start();
                         break;
                     case "2": // Change name
+                        ChangeName();
                         break;
                     case "3": // Get Customer, get are you sure (Y/N) Return account fundings and interest then delete
                         if (DeleteCustomer()) quit = true;
@@ -122,6 +123,86 @@ namespace BankUI
                 }
             }
             return deleted;
+        }
+
+        public static void ChangeName()
+        {
+            bool quit = false;
+            bool dontChangeLast = false;
+
+            string firstName = string.Empty;
+            string lastName = string.Empty;
+
+            string temp = string.Empty;
+
+
+            while (!quit)
+            {
+                temp = GetNewName("firstname");
+
+                if (!string.IsNullOrWhiteSpace(temp))
+                {
+                    firstName = temp.FirstToUpper();
+                    while (!dontChangeLast)
+                    {
+                        temp = string.Empty;
+                        Console.WriteLine("Do you want to change your lastname to? [Y/N]");
+                        string userInput = Console.ReadLine().ToLower();
+                        switch (userInput)
+                        {
+                            case "y":
+                                temp = GetNewName("lastname");
+                                if (!string.IsNullOrWhiteSpace(temp))
+                                {
+                                    lastName = temp.FirstToUpper();
+                                    dontChangeLast = true;
+                                }
+                                break;
+                            case "n":
+                                dontChangeLast = true;
+                                break;
+                            default:
+                                Console.WriteLine("Invalid Input");
+                                break;
+                        }
+                    }
+                }
+                quit = true;
+            }
+            if (!string.IsNullOrWhiteSpace(firstName) && !string.IsNullOrWhiteSpace(lastName))
+            {
+                CurrentCustomer.ChangeName(firstName, lastName);
+            }
+            else if (!string.IsNullOrWhiteSpace(firstName))
+            {
+                CurrentCustomer.ChangeName(firstName, CurrentCustomer.GetLastName());
+            }
+        }
+
+        public static string GetNewName(string firstOrLast)
+        {
+            string name = string.Empty;
+            bool quit = false;
+            while (!quit)
+            {
+
+                Console.WriteLine($"Enter a new {firstOrLast} [e] to exit");
+                string userInput = Console.ReadLine();
+                if (userInput.ToLower() == "e")
+                {
+                    quit = true;
+                }
+                else if (userInput.ValidateName())
+                {
+                    name = userInput;
+                    quit = true;
+                }
+                else
+                {
+                    Console.WriteLine("Invalid input");
+                }
+            }
+            return name;
         }
     }
 }
