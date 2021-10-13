@@ -5,25 +5,17 @@ namespace BankLogic
 {
     public static class Validate
     {
-        public static string FirstToUpper(this string name)
-        {
-            string change = name.ToLower();
-            string s = change[0].ToString().ToUpper() + change.Substring(1);
-
-            return s;
-        }
-
-
         /// <summary>
-        /// Returns name uppercase if name is valid
+        /// Returns name with first letter to uppercase
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
         public static string UpperCase(this string name)
         {
-            string s = name[0].ToString().ToUpper() + name.Substring(1);
+            string s = name[0].ToString().ToUpper() + name[1..].ToLower();
             return s;
         }
+
         /// <summary>
         /// Returns true if name is valid
         /// </summary>
@@ -33,8 +25,6 @@ namespace BankLogic
         {
             return Regex.Match(name, "^[a-öA-Ö]*$").Success && !string.IsNullOrWhiteSpace(name);
         }
-
-
 
         /// <summary>
         /// Returns true if valid customerID format YYYYMMDD Input should be a string
@@ -74,10 +64,8 @@ namespace BankLogic
             return validated;
         }
 
-
-
         /// <summary>
-        /// Checks if customer exists
+        /// Checks if customer exists returns true if found
         /// </summary>
         /// <param name="customerID"></param>
         /// <returns></returns>

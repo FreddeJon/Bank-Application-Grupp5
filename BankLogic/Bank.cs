@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System;
 
 namespace BankLogic
 {
@@ -61,22 +62,41 @@ namespace BankLogic
 
         public static void LoadFromTextFile()
         {
-            CustomerList = Customer.ReadFromCustomerFile();
-            List<Account> accountList = Account.ReadFromAccountFile();
-            foreach (var customer in CustomerList)
+            try
             {
-                var list = accountList.Where(x => x.GetAccountId() == customer.GetCustomerID()).ToList();
-
-                foreach (var account in list)
+                CustomerList = Customer.ReadFromCustomerFile();
+                List<Account> accountList = Account.ReadFromAccountFile();
+                foreach (var customer in CustomerList)
                 {
-                    customer.AddAccount(account);
+                    var list = accountList.Where(x => x.GetAccountId() == customer.GetCustomerID()).ToList();
+
+                    foreach (var account in list)
+                    {
+                        customer.AddAccount(account);
+                    }
                 }
             }
+            catch (Exception e)
+            {
+
+                Console.WriteLine("Error in Bank.LoadFromTextFile");
+                Console.WriteLine(e);            
+                Console.ReadLine();
+            }
+
         }
         public static void SaveToTextFile()
         {
-            Customer.SaveCustomersToFile();
-            Account.SaveAccountsToFile();
+            try
+            {
+                Customer.SaveCustomersToFile();
+                Account.SaveAccountsToFile();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error in Bank.SaveToTextFile");
+                Console.WriteLine(e);
+            }
 
         }
     }

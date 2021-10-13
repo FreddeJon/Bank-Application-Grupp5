@@ -51,7 +51,7 @@ namespace BankUI
             bool quit = false;
             while (!quit)
             {
-                Console.WriteLine("1. Accounts\n2. Change Name\n3. Delete Customer\n4. Exit");
+                Console.WriteLine("1. Accounts\n2. Change Name\n3. Delete Customer\n4. Back");
                 switch (Console.ReadLine())
                 {
                     case "1": // Account Menu
@@ -131,20 +131,15 @@ namespace BankUI
 
             string firstName = string.Empty;
             string lastName = string.Empty;
-
-            string temp = string.Empty;
-
-
             while (!quit)
             {
-                temp = GetNewName("firstname");
+                string temp = GetNewName("firstname");
 
                 if (!string.IsNullOrWhiteSpace(temp))
                 {
-                    firstName = temp.FirstToUpper();
+                    firstName = temp.UpperCase();
                     while (!dontChangeLast)
                     {
-                        temp = string.Empty;
                         Console.WriteLine("Do you want to change your lastname to? [Y/N]");
                         string userInput = Console.ReadLine().ToLower();
                         switch (userInput)
@@ -153,7 +148,7 @@ namespace BankUI
                                 temp = GetNewName("lastname");
                                 if (!string.IsNullOrWhiteSpace(temp))
                                 {
-                                    lastName = temp.FirstToUpper();
+                                    lastName = temp.UpperCase();
                                     dontChangeLast = true;
                                 }
                                 break;
