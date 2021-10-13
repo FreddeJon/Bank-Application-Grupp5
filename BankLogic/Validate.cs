@@ -3,6 +3,7 @@ using System.Text.RegularExpressions;
 
 namespace BankLogic
 {
+    // Class that adds some validation 
     public static class Validate
     {
         /// <summary>

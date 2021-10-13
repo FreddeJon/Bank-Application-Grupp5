@@ -29,11 +29,11 @@ namespace BankLogic
             AccountType = accountType;
             if (AccountType == AccountType.Saving)
             {
-                Interest = 1.15M;
+                Interest = 1.05M;
             }
             else
             {
-                Interest = 1.05M;
+                Interest = 1.01M;
             }
         }
 
@@ -87,7 +87,7 @@ namespace BankLogic
         //Overrided ToString()
         public override string ToString()
         {
-            return $"[{AccountNumber}] AccountType:{AccountType} Balance:{AccountBalance:C}";
+            return $"[{AccountNumber}] {AccountType} \nBalance:{AccountBalance:C}";
         }
 
 

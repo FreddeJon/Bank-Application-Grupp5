@@ -7,7 +7,7 @@ namespace BankUI
 {
     public class CustomerMenu
     {
-        public static Customer CurrentCustomer;
+        public static Customer CurrentCustomer { get; private set;}
 
 
         public static void Start()
@@ -15,9 +15,9 @@ namespace BankUI
             bool quit = false;
             while (!quit)
             {
-                Console.WriteLine("Enter Personnummer or Enter [e] to exit: ");
+                Console.WriteLine("Enter Socialnumber or Enter [e] to exit: ");
                 string customerID = Console.ReadLine().ToLower();
-                if (customerID == "e")    // || or    && and 
+                if (customerID == "e") 
                 {
                     quit = true;
                 }
@@ -51,6 +51,8 @@ namespace BankUI
             bool quit = false;
             while (!quit)
             {
+                Console.Clear();
+                CustomerHeader();
                 Console.WriteLine("1. Accounts\n2. Change Name\n3. Delete Customer\n4. Back");
                 switch (Console.ReadLine())
                 {
@@ -103,9 +105,16 @@ namespace BankUI
                             interest += (account.GetAccountBalance() * account.GetInterest()) - account.GetAccountBalance();
                             Console.WriteLine($"Deleted account [{account.GetAccountNumber()}]");
                         }
-                        Console.WriteLine($"Deleted Customer: {CurrentCustomer.GetName()}\nPayout: {total:C}\nInterest: {interest:C}");
-                        Bank.RemoveCustomer(CurrentCustomer.GetCustomerID());
+                        if (interest > 0)
+                        {
+                            Console.WriteLine($"Deleted Customer: {CurrentCustomer.GetName()}\nPayout: {total:C}\nInterest: {interest:C}");
+                        }
+                        else
+                        {
+                            Console.WriteLine($"Deleted Customer: {CurrentCustomer.GetName()}\nPayout: {total:C}");
 
+                        }
+                        Bank.RemoveCustomer(CurrentCustomer.GetCustomerID());
 
                         Console.WriteLine("Enter to continue");
                         Console.ReadLine();
@@ -197,6 +206,19 @@ namespace BankUI
                 }
             }
             return name;
+        }
+
+        public static void CustomerHeader()
+        {
+
+            string header = $"{CurrentCustomer.GetName()}";
+            string lines = string.Empty;
+            for (int i = 0; i < header.Length; i++)
+            {
+                lines += "-";
+            }
+            Console.WriteLine($"{header}\n{lines}");
+
         }
     }
 }
