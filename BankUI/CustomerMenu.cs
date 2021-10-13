@@ -15,7 +15,7 @@ namespace BankUI
             bool quit = false;
             while (!quit)
             {
-                Console.WriteLine("Enter Socialnumber [e] to exit: ");
+                Console.WriteLine("Enter Socialnumber [YYYYMMDD] [e] to exit: ");
                 Console.Write("Enter: ");
                 string customerID = Console.ReadLine().ToLower();
                 if (customerID == "e") 
@@ -33,11 +33,13 @@ namespace BankUI
                     else
                     {
                         Console.WriteLine("Following customer number does not exist");
+                        Program.PushToContinue();
                     }
                 }
                 else
                 {
                     Console.WriteLine("Invalid input enter [YYYYMMDD]");
+                    Program.PushToContinue();
                 }
             }
         }

@@ -163,7 +163,7 @@ namespace BankUI
         private static void Withdraw()
         {
             bool quit = false;
-            var account = SelectAccount("Which account would you like to make a withdraw");
+            var account = SelectAccount("Which account would you like to make a withdraw from");
 
             if (account == null) quit = true;
 
