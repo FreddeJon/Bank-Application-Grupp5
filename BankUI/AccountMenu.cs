@@ -76,7 +76,7 @@ namespace BankUI
         }
 
 
-        private static Account SelectAccount()
+        private static Account SelectAccount(string select)
         {
             bool quit = false;
             Account selectedAccount = null;
@@ -84,8 +84,8 @@ namespace BankUI
             {
                 Console.Clear();
                 AccountHeader();
-                Console.WriteLine("Select by account number [e] to exit");
-                Console.Write("Enter: ");
+                Console.WriteLine($"{select} [e] to exit");
+                Console.Write("Enter Account Number: ");
 
                 string userInput = Console.ReadLine();
                 if (userInput.ToLower() == "e")
@@ -120,7 +120,7 @@ namespace BankUI
         private static void Deposit()
         {
             bool quit = false;
-            var account = SelectAccount();
+            var account = SelectAccount("Which account would you like to make a deposit to");
 
             if (account == null) quit = true;
 
@@ -163,7 +163,7 @@ namespace BankUI
         private static void Withdraw()
         {
             bool quit = false;
-            var account = SelectAccount();
+            var account = SelectAccount("Which account would you like to make a withdraw");
 
             if (account == null) quit = true;
 
@@ -235,7 +235,7 @@ namespace BankUI
         private static void DeleteAccount()
         {
             bool quit = false;
-            Account account = SelectAccount();
+            Account account = SelectAccount("Which account would you like to close");
 
             if (account == null) quit = true;
 
