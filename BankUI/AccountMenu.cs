@@ -7,10 +7,12 @@ namespace BankUI
     {
 
         private static Customer CurrentCustomer;
+
+
+
         public static void Start()
         {
             CurrentCustomer = CustomerMenu.CurrentCustomer;
-            //While loop, switch
             bool quit = false;
             while (!quit)
             {
@@ -40,10 +42,16 @@ namespace BankUI
                             Console.WriteLine("You dont have any accounts");
                             Program.PushToContinue();
                         }
-
                         break;
                     case "3": // Add Account
-                        AddAccount();
+                        if (CurrentCustomer.GetCustomerAccounts().Count < 5)
+                        {
+                            AddAccount();
+                        }
+                        else
+                        {
+                            Console.WriteLine("You have to many accounts");
+                        }
                         break;
                     case "4": // Delete Account
                         if (CurrentCustomer.GetCustomerAccounts().Count > 0)
@@ -66,6 +74,7 @@ namespace BankUI
                 }
             }
         }
+
 
         private static Account SelectAccount()
         {
