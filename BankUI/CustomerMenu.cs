@@ -140,7 +140,7 @@ namespace BankUI
 
 
         //Change name
-        public static void ChangeName()
+        private static void ChangeName()
         {
             bool quit = false;
             bool dontChangeLast = false;
@@ -191,7 +191,7 @@ namespace BankUI
 
 
         //Method that changes name uses to get name
-        public static string GetNewName(string firstOrLast)
+        private static string GetNewName(string firstOrLast)
         {
             string name = string.Empty;
             bool quit = false;
@@ -219,7 +219,7 @@ namespace BankUI
 
 
         //Header
-        public static void CustomerHeader()
+        private static void CustomerHeader()
         {
 
             string header = $"{CurrentCustomer.GetName()}";
