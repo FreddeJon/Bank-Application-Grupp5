@@ -87,7 +87,7 @@ namespace BankLogic
         //Overrided ToString()
         public override string ToString()
         {
-            return $"[{AccountNumber}] {AccountType} \nBalance:{AccountBalance:C}";
+            return $"[{AccountNumber}] {AccountType} \nBalance: {AccountBalance:C}";
         }
 
 

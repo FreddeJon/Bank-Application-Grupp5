@@ -76,46 +76,6 @@ namespace BankUI
         }
 
 
-        private static Account SelectAccount(string select)
-        {
-            bool quit = false;
-            Account selectedAccount = null;
-            while (!quit)
-            {
-                Console.Clear();
-                AccountHeader();
-                Console.WriteLine($"{select} [e] to exit");
-                Console.Write("Enter Account Number: ");
-
-                string userInput = Console.ReadLine();
-                if (userInput.ToLower() == "e")
-                {
-                    quit = true;
-                }
-                else if (long.TryParse(userInput, out long accountNumber))
-                {
-                    Account currentAccount = CurrentCustomer.GetAccountByAccountNumber(accountNumber);
-                    if (currentAccount != null)
-                    {
-                        selectedAccount = currentAccount;
-                        quit = true;
-                    }
-                    else
-                    {
-                        Console.WriteLine("You dont have an account with that account number");
-                        Program.PushToContinue();
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("Invalid Input");
-                    Program.PushToContinue();
-                }
-            }
-            return selectedAccount;
-        }
-
-
         //Deposit
         private static void Deposit()
         {
@@ -159,7 +119,7 @@ namespace BankUI
         }
 
 
-
+        //Withdraw
         private static void Withdraw()
         {
             bool quit = false;
@@ -201,6 +161,7 @@ namespace BankUI
         }
 
 
+        //Add Account
         private static void AddAccount()
         {
             bool quit;
@@ -232,6 +193,8 @@ namespace BankUI
             } while (!quit);
         }
 
+
+        // Delete Account
         private static void DeleteAccount()
         {
             bool quit = false;
@@ -251,6 +214,49 @@ namespace BankUI
             }
         }
 
+
+        //Select account to perform actions to
+        private static Account SelectAccount(string select)
+        {
+            bool quit = false;
+            Account selectedAccount = null;
+            while (!quit)
+            {
+                Console.Clear();
+                AccountHeader();
+                Console.WriteLine($"{select} [e] to exit");
+                Console.Write("Enter Account Number: ");
+
+                string userInput = Console.ReadLine();
+                if (userInput.ToLower() == "e")
+                {
+                    quit = true;
+                }
+                else if (long.TryParse(userInput, out long accountNumber))
+                {
+                    Account currentAccount = CurrentCustomer.GetAccountByAccountNumber(accountNumber);
+                    if (currentAccount != null)
+                    {
+                        selectedAccount = currentAccount;
+                        quit = true;
+                    }
+                    else
+                    {
+                        Console.WriteLine("You dont have an account with that account number");
+                        Program.PushToContinue();
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Invalid Input");
+                    Program.PushToContinue();
+                }
+            }
+            return selectedAccount;
+        }
+
+
+        //Header
         private static void AccountHeader()
         {
             string header = $"{ CurrentCustomer.GetName()}:Accounts";

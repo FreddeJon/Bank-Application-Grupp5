@@ -45,6 +45,7 @@ namespace BankUI
         }
 
 
+        //Customer Menu
         private static void Menu()
         {
             //AccountMenu
@@ -81,6 +82,7 @@ namespace BankUI
         }
 
 
+        //Delete Customer
         private static bool DeleteCustomer()
         {
             bool deleted = false;
@@ -136,6 +138,8 @@ namespace BankUI
             return deleted;
         }
 
+
+        //Change name
         public static void ChangeName()
         {
             bool quit = false;
@@ -185,6 +189,8 @@ namespace BankUI
             }
         }
 
+
+        //Method that changes name uses to get name
         public static string GetNewName(string firstOrLast)
         {
             string name = string.Empty;
@@ -211,6 +217,8 @@ namespace BankUI
             return name;
         }
 
+
+        //Header
         public static void CustomerHeader()
         {
 
