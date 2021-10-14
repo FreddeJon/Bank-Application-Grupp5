@@ -5,7 +5,6 @@ namespace BankUI
 {
     public class AccountMenu
     {
-
         private static Customer CurrentCustomer;
 
 

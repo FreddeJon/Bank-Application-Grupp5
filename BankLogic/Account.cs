@@ -85,10 +85,7 @@ namespace BankLogic
         public decimal GetInterest() => Interest;
 
         //Overrided ToString()
-        public override string ToString()
-        {
-            return $"[{AccountNumber}] {AccountType} \nBalance: {AccountBalance:C}";
-        }
+        public override string ToString() => $"[{AccountNumber}] {AccountType} \nBalance: {AccountBalance:C}";
 
 
 
