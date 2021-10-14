@@ -35,10 +35,10 @@ namespace BankUI
                     case "1":
                     names:
                         Console.WriteLine("Please Enter your Firstname: ");
-                        name = Console.ReadLine();
+                        name = Console.ReadLine().Trim();
 
                         Console.WriteLine("Please Enter your Lastname: ");
-                        lastname = Console.ReadLine();
+                        lastname = Console.ReadLine().Trim();
                         if (!name.ValidateName() || !lastname.ValidateName())
                         {
                             Console.WriteLine("Firstname or Lastname is not correct! try again");
